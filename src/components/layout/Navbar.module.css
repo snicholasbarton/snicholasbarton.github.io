@@ -1,13 +1,11 @@
 @reference "../../index.css";
 
 .nav {
-  composes: transitionDefault from "../../styles/shared.module.css";
-  @apply fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800;
+  @apply transition-default fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800;
 }
 
 .container {
-  composes: containerPadding from "../../styles/shared.module.css";
-  @apply max-w-7xl;
+  @apply container-padding max-w-7xl;
 }
 
 .flexContainer {

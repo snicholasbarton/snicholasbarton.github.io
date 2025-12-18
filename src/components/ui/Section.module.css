@@ -1,6 +1,5 @@
 @reference "../../index.css";
 
 .section {
-  composes: containerPadding from "../../styles/shared.module.css";
-  @apply max-w-4xl py-12;
+  @apply container-padding max-w-4xl py-12;
 }

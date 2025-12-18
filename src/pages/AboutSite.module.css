@@ -1,7 +1,7 @@
 @reference "../index.css";
 
 .aboutText {
-  composes: introText from "../styles/shared.module.css";
+  @apply intro-text;
 }
 
 .grid {

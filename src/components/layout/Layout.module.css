@@ -1,8 +1,7 @@
 @reference "../../index.css";
 
 .container {
-  composes: transitionDefault from "../../styles/shared.module.css";
-  @apply min-h-screen flex flex-col bg-background text-foreground;
+  @apply transition-default min-h-screen flex flex-col bg-background text-foreground;
 }
 
 .main {

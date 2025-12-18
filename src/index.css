@@ -1,6 +1,18 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+@utility container-padding {
+  @apply px-4 sm:px-6 lg:px-8 mx-auto;
+}
+
+@utility transition-default {
+  @apply transition-colors duration-300;
+}
+
+@utility intro-text {
+  @apply text-xl mb-12 leading-relaxed;
+}
+
 @theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

@@ -1,13 +1,11 @@
 @reference "../../index.css";
 
 .footer {
-  composes: transitionDefault from "../../styles/shared.module.css";
-  @apply bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800 py-8;
+  @apply transition-default bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800 py-8;
 }
 
 .container {
-  composes: containerPadding from "../../styles/shared.module.css";
-  @apply max-w-7xl flex flex-col md:flex-row justify-between items-center;
+  @apply container-padding max-w-7xl flex flex-col md:flex-row justify-between items-center;
 }
 
 .copyrightContainer {
