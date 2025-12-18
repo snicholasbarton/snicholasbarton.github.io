@@ -1,0 +1,61 @@
+@reference "../../index.css";
+
+.nav {
+  @apply fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 transition-colors duration-300;
+}
+
+.container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.flexContainer {
+  @apply flex items-center justify-between h-16;
+}
+
+.logoContainer {
+  @apply flex-shrink-0;
+}
+
+.logo {
+  @apply text-xl font-bold font-mono tracking-tighter hover:text-primary transition-colors;
+}
+
+.desktopNav {
+  @apply hidden md:block;
+}
+
+.desktopNavInner {
+  @apply ml-10 flex items-baseline space-x-4;
+}
+
+.link {
+  @apply px-3 py-2 rounded-md text-sm font-medium transition-colors;
+}
+
+.linkActive {
+  @apply bg-gray-100 dark:bg-gray-800 text-primary;
+}
+
+.linkInactive {
+  @apply text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-900;
+}
+
+.mobileMenuBtnContainer {
+  @apply -mr-2 flex md:hidden;
+}
+
+.mobileMenuBtn {
+  @apply mr-2;
+}
+
+.mobileMenu {
+  @apply md:hidden bg-white dark:bg-black border-b border-gray-200 dark:border-gray-800;
+}
+
+.mobileMenuInner {
+  @apply px-2 pt-2 pb-3 space-y-1 sm:px-3;
+}
+
+.mobileLink {
+  @apply block px-3 py-2 rounded-md text-base font-medium;
+}

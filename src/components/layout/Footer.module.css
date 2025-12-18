@@ -1,0 +1,29 @@
+@reference "../../index.css";
+
+.footer {
+  @apply bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800 py-8 transition-colors duration-300;
+}
+
+.container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center;
+}
+
+.copyrightContainer {
+  @apply mb-4 md:mb-0;
+}
+
+.copyrightText {
+  @apply text-sm text-gray-500 dark:text-gray-400;
+}
+
+.linksContainer {
+  @apply flex space-x-6 items-center;
+}
+
+.link {
+  @apply text-sm text-gray-400 hover:text-gray-500 dark:hover:text-gray-300 transition-colors;
+}
+
+.socialLink {
+  @apply text-gray-400 hover:text-gray-500 dark:hover:text-gray-300;
+}

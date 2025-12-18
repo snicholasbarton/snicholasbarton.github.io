@@ -3,6 +3,7 @@ import { Navbar } from './Navbar';
 import { Footer } from './Footer';
 import { Expand } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import styles from './Layout.module.css';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -39,15 +40,15 @@ const ResizeIndicator = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 20 }}
-          className="hidden md:flex fixed bottom-8 right-8 z-40 bg-primary text-primary-foreground p-4 rounded-lg shadow-lg items-center space-x-3 max-w-xs cursor-pointer"
+          className={styles.indicator}
           onClick={() => setIsVisible(false)}
         >
-          <div className="bg-white/20 p-2 rounded-full">
+          <div className={styles.indicatorIcon}>
             <Expand size={24} />
           </div>
-          <div className="flex flex-col">
-            <span className="font-bold text-sm">Try resizing!</span>
-            <span className="text-xs opacity-90">See the layout adapt to your screen.</span>
+          <div className={styles.indicatorTextContainer}>
+            <span className={styles.indicatorTitle}>Try resizing!</span>
+            <span className={styles.indicatorSubtitle}>See the layout adapt to your screen.</span>
           </div>
         </motion.div>
       )}
@@ -57,9 +58,9 @@ const ResizeIndicator = () => {
 
 export const Layout = ({ children }: LayoutProps) => {
   return (
-    <div className="min-h-screen flex flex-col bg-background text-foreground transition-colors duration-300">
+    <div className={styles.container}>
       <Navbar />
-      <main className="flex-grow pt-16">
+      <main className={styles.main}>
         {children}
       </main>
       <ResizeIndicator />

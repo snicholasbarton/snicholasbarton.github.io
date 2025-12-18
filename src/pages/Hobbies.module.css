@@ -1,0 +1,41 @@
+@reference "../index.css";
+
+.introText {
+  @apply mb-12 text-xl;
+}
+
+.stack {
+  @apply space-y-12;
+}
+
+.item {
+  @apply flex flex-col md:flex-row gap-8 items-start;
+}
+
+.iconContainer {
+  @apply p-4 rounded-lg;
+}
+
+.iconOrange {
+  @apply bg-orange-100 dark:bg-orange-900/30;
+}
+
+.iconPurple {
+  @apply bg-purple-100 dark:bg-purple-900/30;
+}
+
+.iconTeal {
+  @apply bg-teal-100 dark:bg-teal-900/30;
+}
+
+.iconCamera {
+  @apply text-orange-600 dark:text-orange-400;
+}
+
+.iconMusic {
+  @apply text-purple-600 dark:text-purple-400;
+}
+
+.iconMountain {
+  @apply text-teal-600 dark:text-teal-400;
+}

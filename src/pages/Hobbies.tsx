@@ -2,6 +2,8 @@ import { motion } from 'framer-motion';
 import { Camera, Music, Mountain } from 'lucide-react';
 import { Section } from '../components/ui/Section';
 import { Heading, SubHeading, Paragraph } from '../components/ui/Typography';
+import { cn } from '../lib/utils';
+import styles from './Hobbies.module.css';
 
 export const Hobbies = () => {
   return (
@@ -12,14 +14,14 @@ export const Hobbies = () => {
         transition={{ duration: 0.5 }}
       >
         <Heading>Hobbies & Interests</Heading>
-        <Paragraph className="mb-12 text-xl">
+        <Paragraph className={styles.introText}>
           When I'm not coding, I enjoy exploring the world and expressing creativity through various mediums. Here are a few things that keep me busy.
         </Paragraph>
 
-        <div className="space-y-12">
-          <div className="flex flex-col md:flex-row gap-8 items-start">
-            <div className="bg-orange-100 dark:bg-orange-900/30 p-4 rounded-lg">
-              <Camera size={48} className="text-orange-600 dark:text-orange-400" />
+        <div className={styles.stack}>
+          <div className={styles.item}>
+            <div className={cn(styles.iconContainer, styles.iconOrange)}>
+              <Camera size={48} className={styles.iconCamera} />
             </div>
             <div>
               <SubHeading>Photography</SubHeading>
@@ -29,9 +31,9 @@ export const Hobbies = () => {
             </div>
           </div>
 
-          <div className="flex flex-col md:flex-row gap-8 items-start">
-            <div className="bg-purple-100 dark:bg-purple-900/30 p-4 rounded-lg">
-              <Music size={48} className="text-purple-600 dark:text-purple-400" />
+          <div className={styles.item}>
+            <div className={cn(styles.iconContainer, styles.iconPurple)}>
+              <Music size={48} className={styles.iconMusic} />
             </div>
             <div>
               <SubHeading>Music Production</SubHeading>
@@ -41,9 +43,9 @@ export const Hobbies = () => {
             </div>
           </div>
 
-          <div className="flex flex-col md:flex-row gap-8 items-start">
-            <div className="bg-teal-100 dark:bg-teal-900/30 p-4 rounded-lg">
-              <Mountain size={48} className="text-teal-600 dark:text-teal-400" />
+          <div className={styles.item}>
+            <div className={cn(styles.iconContainer, styles.iconTeal)}>
+              <Mountain size={48} className={styles.iconMountain} />
             </div>
             <div>
               <SubHeading>Hiking & Outdoors</SubHeading>

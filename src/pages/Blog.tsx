@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
 import HelloWorld from '../content/blog/hello-world.mdx';
+import styles from './Blog.module.css';
 
 // In a real app, this would be dynamic, but for now we hardcode the mapping
 const posts = [
@@ -15,21 +16,21 @@ const posts = [
 
 const BlogList = () => {
   return (
-    <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <h1 className="text-4xl font-extrabold mb-8">Blog</h1>
-      <div className="space-y-8">
+    <div className={styles.container}>
+      <h1 className={styles.heading}>Blog</h1>
+      <div className={styles.list}>
         {posts.map((post) => (
-          <div key={post.slug} className="border-b border-gray-200 dark:border-gray-800 pb-8">
-            <Link to={`/blog/${post.slug}`} className="block group">
-              <h2 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
+          <div key={post.slug} className={styles.item}>
+            <Link to={`/blog/${post.slug}`} className={styles.linkGroup}>
+              <h2 className={styles.title}>
                 {post.title}
               </h2>
             </Link>
-            <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">{post.date}</p>
-            <p className="text-gray-600 dark:text-gray-300 mb-4">{post.excerpt}</p>
+            <p className={styles.date}>{post.date}</p>
+            <p className={styles.excerpt}>{post.excerpt}</p>
             <Link
               to={`/blog/${post.slug}`}
-              className="text-primary font-medium hover:underline"
+              className={styles.readMore}
             >
               Read more →
             </Link>
@@ -42,8 +43,8 @@ const BlogList = () => {
 
 const BlogPostLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 prose dark:prose-invert prose-primary lg:prose-lg">
-       <Link to="/blog" className="no-underline text-sm text-gray-500 hover:text-primary mb-8 block">
+    <div className={styles.postLayout}>
+       <Link to="/blog" className={styles.backLink}>
          ← Back to Blog
        </Link>
       {children}

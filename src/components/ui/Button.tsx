@@ -1,29 +1,25 @@
 import React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "../../lib/utils"
+import styles from "./Button.module.css"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center rounded-lg text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 cursor-pointer",
+  styles.button,
   {
     variants: {
       variant: {
-        default:
-          "bg-primary text-primary-foreground hover:bg-blue-700",
-        destructive:
-          "bg-red-500 text-white hover:bg-red-600",
-        outline:
-          "border border-input bg-background hover:bg-gray-100 dark:hover:bg-gray-800 text-foreground",
-        secondary:
-          "bg-gray-100 dark:bg-gray-800 text-foreground hover:bg-gray-200 dark:hover:bg-gray-700",
-        ghost:
-          "hover:bg-gray-100 dark:hover:bg-gray-800 text-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
+        default: styles.variantDefault,
+        destructive: styles.variantDestructive,
+        outline: styles.variantOutline,
+        secondary: styles.variantSecondary,
+        ghost: styles.variantGhost,
+        link: styles.variantLink,
       },
       size: {
-        default: "h-10 px-6 py-3",
-        sm: "h-9 rounded-md px-3",
-        lg: "h-11 rounded-md px-8",
-        icon: "h-10 w-10 p-2",
+        default: styles.sizeDefault,
+        sm: styles.sizeSm,
+        lg: styles.sizeLg,
+        icon: styles.sizeIcon,
       },
     },
     defaultVariants: {

@@ -1,0 +1,29 @@
+@reference "../../index.css";
+
+.container {
+  @apply min-h-screen flex flex-col bg-background text-foreground transition-colors duration-300;
+}
+
+.main {
+  @apply flex-grow pt-16;
+}
+
+.indicator {
+  @apply hidden md:flex fixed bottom-8 right-8 z-40 bg-primary text-primary-foreground p-4 rounded-lg shadow-lg items-center space-x-3 max-w-xs cursor-pointer;
+}
+
+.indicatorIcon {
+  @apply bg-white/20 p-2 rounded-full;
+}
+
+.indicatorTextContainer {
+  @apply flex flex-col;
+}
+
+.indicatorTitle {
+  @apply font-bold text-sm;
+}
+
+.indicatorSubtitle {
+  @apply text-xs opacity-90;
+}

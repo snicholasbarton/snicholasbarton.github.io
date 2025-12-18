@@ -1,0 +1,41 @@
+@reference "../index.css";
+
+.aboutText {
+  @apply mb-12 text-xl;
+}
+
+.grid {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-8;
+}
+
+.cardHeader {
+  @apply flex items-center mb-4;
+}
+
+.cardIcon {
+  @apply mr-3;
+}
+
+.cardIconZap {
+  @apply text-yellow-500 mr-3;
+}
+
+.cardIconLayers {
+  @apply text-cyan-500 mr-3;
+}
+
+.cardIconServer {
+  @apply text-green-500 mr-3;
+}
+
+.cardIconGlobe {
+  @apply text-blue-500 mr-3;
+}
+
+.cardTitle {
+  @apply !mb-0 text-xl;
+}
+
+.cardText {
+  @apply text-base;
+}
