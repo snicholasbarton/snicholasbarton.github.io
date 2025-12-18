@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTheme } from '../../hooks/useTheme';
 import { Menu, X, Sun, Moon } from 'lucide-react';
-import classNames from 'classnames';
+import { cn } from '../../lib/utils';
+import { Button } from '../ui/Button';
 
 export const Navbar = () => {
   const { theme, setTheme } = useTheme();
@@ -37,7 +38,7 @@ export const Navbar = () => {
                 <Link
                   key={link.name}
                   to={link.path}
-                  className={classNames(
+                  className={cn(
                     'px-3 py-2 rounded-md text-sm font-medium transition-colors',
                     location.pathname === link.path
                       ? 'bg-gray-100 dark:bg-gray-800 text-primary'
@@ -47,31 +48,35 @@ export const Navbar = () => {
                   {link.name}
                 </Link>
               ))}
-              <button
+              <Button
+                variant="ghost"
+                size="icon"
                 onClick={toggleTheme}
-                className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
                 aria-label="Toggle theme"
               >
                 {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-              </button>
+              </Button>
             </div>
           </div>
 
           {/* Mobile menu button */}
           <div className="-mr-2 flex md:hidden">
-            <button
+            <Button
+              variant="ghost"
+              size="icon"
               onClick={toggleTheme}
-              className="p-2 mr-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              className="mr-2"
             >
               {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-            </button>
-            <button
+            </Button>
+            <Button
+              variant="ghost"
+              size="icon"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none"
             >
               <span className="sr-only">Open main menu</span>
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+            </Button>
           </div>
         </div>
       </div>
@@ -85,7 +90,7 @@ export const Navbar = () => {
                 key={link.name}
                 to={link.path}
                 onClick={() => setIsMenuOpen(false)}
-                className={classNames(
+                className={cn(
                   'block px-3 py-2 rounded-md text-base font-medium',
                   location.pathname === link.path
                     ? 'bg-gray-100 dark:bg-gray-800 text-primary'

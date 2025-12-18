@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Briefcase, GraduationCap, Code } from 'lucide-react';
 import { Section } from '../components/ui/Section';
 import { Heading, SubHeading, Paragraph } from '../components/ui/Typography';
+import { Button } from '../components/ui/Button';
 
 interface TimelineItemProps {
   title: string;
@@ -64,15 +65,16 @@ export const Home = () => {
             I'm a professional software engineer passionate about building scalable web applications and exploring new technologies.
           </Paragraph>
           <div className="mt-8 flex space-x-4">
-            <button
+            <Button
               onClick={() => document.getElementById('resume')?.scrollIntoView({ behavior: 'smooth' })}
-              className="bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors cursor-pointer"
             >
               View Resume
-            </button>
-            <Link to="/blog" className="bg-gray-100 dark:bg-gray-800 text-foreground px-6 py-3 rounded-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
-              Read Blog
-            </Link>
+            </Button>
+            <Button asChild variant="secondary">
+              <Link to="/blog">
+                Read Blog
+              </Link>
+            </Button>
           </div>
         </motion.div>
       </div>
