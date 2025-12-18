@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Briefcase, GraduationCap, Code } from 'lucide-react';
+import { Section } from '../components/ui/Section';
+import { Heading, SubHeading, Paragraph } from '../components/ui/Typography';
 
 interface TimelineItemProps {
   title: string;
@@ -23,13 +25,13 @@ const TimelineItem = ({ title, subtitle, date, description, icon }: TimelineItem
         {icon}
       </div>
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-2">
-        <h3 className="text-xl font-bold">{title}</h3>
+        <SubHeading className="!mb-0 text-xl">{title}</SubHeading>
         <span className="text-sm text-gray-500 dark:text-gray-400 font-mono">{date}</span>
       </div>
       <div className="text-lg font-medium text-primary mb-2">{subtitle}</div>
-      <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+      <Paragraph className="text-base">
         {description}
-      </p>
+      </Paragraph>
     </motion.div>
   );
 };
@@ -47,20 +49,20 @@ const SkillPill = ({ skill }: { skill: string }) => (
 
 export const Home = () => {
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <Section>
       {/* Hero Section */}
-      <section className="mb-20">
+      <div className="mb-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight mb-6">
+          <Heading className="text-4xl sm:text-6xl">
             Hi, I'm <span className="text-primary">Nicholas Barton</span>.
-          </h1>
-          <p className="text-xl sm:text-2xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl">
+          </Heading>
+          <Paragraph className="text-xl sm:text-2xl max-w-2xl">
             I'm a professional software engineer passionate about building scalable web applications and exploring new technologies.
-          </p>
+          </Paragraph>
           <div className="mt-8 flex space-x-4">
             <button
               onClick={() => document.getElementById('resume')?.scrollIntoView({ behavior: 'smooth' })}
@@ -73,14 +75,14 @@ export const Home = () => {
             </Link>
           </div>
         </motion.div>
-      </section>
+      </div>
 
       {/* Resume Section */}
-      <section id="resume" className="scroll-mt-20">
+      <div id="resume" className="scroll-mt-20">
         <div className="mb-16">
-          <h2 className="text-3xl font-bold mb-8 flex items-center">
+          <SubHeading className="text-3xl mb-8 flex items-center">
             <Briefcase className="mr-3" /> Experience
-          </h2>
+          </SubHeading>
           <div className="space-y-2">
             <TimelineItem
               title="Senior Software Engineer"
@@ -100,9 +102,9 @@ export const Home = () => {
         </div>
 
         <div className="mb-16">
-          <h2 className="text-3xl font-bold mb-8 flex items-center">
+          <SubHeading className="text-3xl mb-8 flex items-center">
             <GraduationCap className="mr-3" /> Education
-          </h2>
+          </SubHeading>
           <div className="space-y-2">
             <TimelineItem
               title="BS Computer Science"
@@ -115,16 +117,16 @@ export const Home = () => {
         </div>
 
         <div className="mb-16">
-          <h2 className="text-3xl font-bold mb-8 flex items-center">
+          <SubHeading className="text-3xl mb-8 flex items-center">
             <Code className="mr-3" /> Skills
-          </h2>
+          </SubHeading>
           <div className="flex flex-wrap">
             {["React", "TypeScript", "Node.js", "Python", "AWS", "Docker", "GraphQL", "Tailwind CSS", "PostgreSQL", "Redis"].map(skill => (
               <SkillPill key={skill} skill={skill} />
             ))}
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </Section>
   );
 };

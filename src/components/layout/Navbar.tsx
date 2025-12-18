@@ -12,7 +12,6 @@ export const Navbar = () => {
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'Blog', path: '/blog' },
-    { name: 'About Site', path: '/about-site' },
     { name: 'Hobbies', path: '/hobbies' },
   ];
 

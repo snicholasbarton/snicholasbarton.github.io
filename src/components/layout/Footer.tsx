@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export const Footer = () => {
   return (
     <footer className="bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800 py-8 transition-colors duration-300">
@@ -7,7 +9,10 @@ export const Footer = () => {
             © {new Date().getFullYear()} S. Nicholas Barton. All rights reserved.
           </p>
         </div>
-        <div className="flex space-x-6">
+        <div className="flex space-x-6 items-center">
+          <Link to="/about-site" className="text-sm text-gray-400 hover:text-gray-500 dark:hover:text-gray-300 transition-colors">
+            How this site works
+          </Link>
           <a href="#" className="text-gray-400 hover:text-gray-500 dark:hover:text-gray-300">
             <span className="sr-only">GitHub</span>
             {/* GitHub Icon Placeholder */}
