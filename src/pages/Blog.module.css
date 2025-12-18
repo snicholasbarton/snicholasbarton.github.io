@@ -1,7 +1,8 @@
 @reference "../index.css";
 
 .container {
-  @apply max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12;
+  composes: containerPadding from "../styles/shared.module.css";
+  @apply max-w-3xl py-12;
 }
 
 .heading {
@@ -37,7 +38,8 @@
 }
 
 .postLayout {
-  @apply max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 prose dark:prose-invert lg:prose-lg;
+  composes: containerPadding from "../styles/shared.module.css";
+  @apply max-w-3xl py-12 prose dark:prose-invert lg:prose-lg;
   --tw-prose-links: var(--primary);
   --tw-prose-headings: var(--foreground);
 }

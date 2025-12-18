@@ -1,7 +1,7 @@
 @reference "../index.css";
 
 .introText {
-  @apply mb-12 text-xl;
+  composes: introText from "../styles/shared.module.css";
 }
 
 .stack {
