@@ -63,10 +63,10 @@ export function Tooltip({ children, content, className }: TooltipProps) {
         {isOpen && (
           <motion.div
             className={styles.tooltip}
-            initial={{ opacity: 0, y: 5, scale: 0.95, x: "-50%" }}
-            animate={{ opacity: 1, y: 0, scale: 1, x: "-50%" }}
-            exit={{ opacity: 0, y: 5, scale: 0.95, x: "-50%" }}
-            transition={{ duration: 0.15 }}
+            initial={{ opacity: 0, y: -5, scale: 0.95, x: "-20%" }}
+            animate={{ opacity: 1, y: 10, scale: 1, x: "-20%" }}
+            exit={{ opacity: 0, y: -5, scale: 0.95, x: "-20%" }}
+            transition={{ duration: 0.1 }}
             onClick={(e) => e.stopPropagation()} // Clicking content shouldn't toggle
           >
             {content}
