@@ -1,0 +1,17 @@
+@reference "../../index.css";
+
+.trigger {
+  @apply relative inline-block cursor-pointer underline decoration-dotted decoration-gray-400 underline-offset-4 decoration-2;
+}
+
+.trigger:hover {
+  @apply decoration-gray-600;
+}
+
+.tooltip {
+  @apply absolute left-1/2 bottom-[calc(100%+0.5rem)] -translate-x-1/2 z-50 w-max max-w-[200px] sm:max-w-xs
+         rounded-lg border border-gray-200 bg-white p-3 text-sm text-gray-700 shadow-lg;
+}
+
+/* For dark mode support if needed later, but focusing on default for now.
+   Assuming standard text colors. */
