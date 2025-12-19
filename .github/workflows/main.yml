@@ -1,0 +1,23 @@
+name: Publish Latest Changes
+
+on:
+  workflow_dispatch:
+
+jobs:
+  create-pull-request:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v8
+        with:
+          commit-message: "release: merge main into publish"
+          branch: auto-sync-main-to-publish
+          branch-suffix: timestamp
+          base: publish
+          title: "Release: Merge main into publish"
+          body: |
+            This is an automated PR to publish the latest changes from `main` into the `publish` branch, to be deployed to the live site.
+  
