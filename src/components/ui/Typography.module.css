@@ -1,0 +1,13 @@
+@reference "../../index.css";
+
+.heading {
+  @apply text-4xl font-extrabold mb-6 tracking-tight text-gray-900 dark:text-gray-100;
+}
+
+.subHeading {
+  @apply text-2xl font-bold mb-3 text-gray-800 dark:text-gray-200;
+}
+
+.paragraph {
+  @apply text-lg text-gray-700 dark:text-gray-300 leading-relaxed;
+}

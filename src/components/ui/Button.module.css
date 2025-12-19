@@ -1,0 +1,47 @@
+@reference "../../index.css";
+
+.button {
+  @apply inline-flex items-center justify-center rounded-lg text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-50 cursor-pointer;
+  /* ring-ring is likely a custom color that might not be resolved if not defined in @theme. Using ring-primary as fallback or just removing the color reference if it was copy-paste from shadcn */
+  @apply focus-visible:ring-blue-500;
+}
+
+.variantDefault {
+  @apply bg-primary text-primary-foreground hover:bg-blue-700;
+}
+
+.variantDestructive {
+  @apply bg-red-500 text-white hover:bg-red-600;
+}
+
+.variantOutline {
+  @apply border border-gray-200 dark:border-gray-800 bg-background hover:bg-gray-100 dark:hover:bg-gray-800 text-foreground;
+}
+
+.variantSecondary {
+  @apply bg-gray-100 dark:bg-gray-800 text-foreground hover:bg-gray-200 dark:hover:bg-gray-700;
+}
+
+.variantGhost {
+  @apply hover:bg-gray-100 dark:hover:bg-gray-800 text-foreground;
+}
+
+.variantLink {
+  @apply text-primary underline-offset-4 hover:underline;
+}
+
+.sizeDefault {
+  @apply h-10 px-6 py-3;
+}
+
+.sizeSm {
+  @apply h-9 rounded-md px-3;
+}
+
+.sizeLg {
+  @apply h-11 rounded-md px-8;
+}
+
+.sizeIcon {
+  @apply h-10 w-10 p-2;
+}
