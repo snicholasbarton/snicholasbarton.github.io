@@ -11,3 +11,15 @@
 .paragraph {
   @apply text-lg text-gray-700 dark:text-gray-300 leading-relaxed;
 }
+
+.body {
+  @apply text-sm text-gray-700 dark:text-gray-300 leading-relaxed;
+}
+
+.list {
+  @apply mt-4;
+}
+
+.listItem {
+  @apply text-sm text-gray-700 dark:text-gray-300 leading-relaxed list-disc ml-5;
+}
