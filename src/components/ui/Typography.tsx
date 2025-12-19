@@ -30,3 +30,22 @@ export const Paragraph = ({ children, className }: TypographyProps) => {
     </p>
   );
 };
+
+
+export const UnorderedList = ({ children, className }: TypographyProps) => {
+  return (
+    <ul className={cn(styles.list, className)}>
+      {children}
+    </ul>
+  );
+};
+
+export const ListItem = ({ children, className }: TypographyProps) => {
+  return (
+    <li className={cn(styles.listItem, className)}>
+      {children}
+    </li>
+  );
+};
+
+

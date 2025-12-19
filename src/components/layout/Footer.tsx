@@ -11,6 +11,9 @@ export const Footer = () => {
           </p>
         </div>
         <div className={styles.linksContainer}>
+          <Link to="/ai-statement" className={styles.link}>
+            AI statement
+          </Link>
           <Link to="/about-site" className={styles.link}>
             How this site works
           </Link>
