@@ -1,5 +1,64 @@
 @reference "../../index.css";
 
+/* Shared visual styling classes */
+/* bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-sm rounded-xl */
+
 .card {
-  @apply bg-gray-50 dark:bg-gray-900 p-6 rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm;
+  @apply bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-sm rounded-xl p-6;
+}
+
+/* 3D Flip Layout */
+.perspectiveContainer {
+  @apply relative w-full h-full;
+  perspective: 1000px;
+}
+
+.flipInner {
+  @apply relative w-full h-full transition-transform duration-700 ease-in-out;
+  transform-style: preserve-3d;
+  display: grid;
+  grid-template-areas: "stack";
+}
+
+.flipped {
+  transform: rotateX(-180deg);
+}
+
+.face {
+  /* Applying the shared visual styles directly here */
+  @apply bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-sm rounded-xl p-6 w-full h-full;
+
+  grid-area: stack;
+  backface-visibility: hidden;
+  /* Ensure the dog ear doesn't overflow the rounded corners */
+  overflow: hidden;
+}
+
+.faceFront {
+  /* Default orientation */
+}
+
+.faceBack {
+  transform: rotateX(-180deg);
+}
+
+/* Dog Ear Styling */
+.dogEar {
+  @apply absolute top-0 right-0 w-12 h-12 z-20 cursor-pointer p-0 border-0;
+  /* Contrasting colors: Dark in light mode, Light in dark mode */
+  @apply bg-gray-900 dark:bg-gray-50;
+
+  /* Create the triangle shape (Top-Right corner) */
+  clip-path: polygon(0 0, 100% 0, 100% 100%);
+
+  transition: transform 0.3s ease;
+
+  /* Reset button styles */
+  appearance: none;
+}
+
+.dogEar:hover, .dogEar:focus-visible {
+  /* Peel effect: move slightly down and left */
+  transform: translate(-4px, 4px) scale(1.1);
+  @apply outline-hidden;
 }
