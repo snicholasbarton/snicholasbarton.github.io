@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { Section } from '../components/ui/Section';
 import { Heading, ListItem, Paragraph, SubHeading, UnorderedList } from '../components/ui/Typography';
-import styles from './Hobbies.module.css';
+import styles from './AiStatement.module.css';
 
 export const AiStatement = () => {
     return (
@@ -16,7 +16,7 @@ export const AiStatement = () => {
                 This website was partially developed with the use of AI coding tools including, but not limited to, Google Gemini, Google Jules, and ChatGPT. Read more below to understand where AI-generated content might appear.
             </Paragraph>
             <SubHeading>Use of AI in the development of this website</SubHeading>
-            <Paragraph className={styles.body}>
+            <Paragraph>
                 While there is value in AI tools for accelerating technological development and developer productivity, I am a firm believer in the inherent human value of non-AI-generated artistic and intellectual content. To that end, I will strive to uphold the following with regards to this website:
                  <UnorderedList>
                     <ListItem>
@@ -38,7 +38,7 @@ export const AiStatement = () => {
             </Paragraph>
             <br />
             <SubHeading>AI use of this website's content</SubHeading>
-            <Paragraph className={styles.body}>
+            <Paragraph>
                 It is forbidden to use any of the content of this website to train, build, deploy, or otherwise operate any form of AI, generative or otherwise, without the express permission of the author.
             </Paragraph>
         </motion.div>
