@@ -28,12 +28,12 @@ const DogEar = ({ isFlipped, onFlip, visible }: DogEarProps) => (
   />
 );
 
-export const Card = ({ children, className, animated = false, backContent }: CardProps) => {
+export const Card = ({ children, className, backContent }: CardProps) => {
   const [isFlipped, setIsFlipped] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
 
   // Only enable flip functionality if animated is requested AND backContent is provided
-  const isFlippable = animated && backContent;
+  const isFlippable = !!backContent;
 
   const handleFlip = () => {
     if (isAnimating) return; // Prevent double clicks during animation
