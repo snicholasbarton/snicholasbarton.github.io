@@ -6,6 +6,13 @@ import { Heading, SubHeading, Paragraph } from '../components/ui/Typography';
 import styles from './AboutSite.module.css';
 
 export const AboutSite = () => {
+  const backContent = <div><div className={styles.cardHeader}>
+              <Zap className={styles.cardIconZap} size={24} />
+              <SubHeading className={styles.cardTitle}>Build system</SubHeading>
+            </div>
+            <Paragraph className={styles.cardText}>
+              We didn't use Webpack for this site since it's small and only intended for modern browsers.
+            </Paragraph></div>
   return (
     <Section>
       <motion.div
@@ -19,7 +26,7 @@ export const AboutSite = () => {
         </Paragraph>
 
         <div className={styles.grid}>
-          <Card>
+          <Card backContent={backContent}>
             <div className={styles.cardHeader}>
               <Zap className={styles.cardIconZap} size={24} />
               <SubHeading className={styles.cardTitle}>Vite & React</SubHeading>
