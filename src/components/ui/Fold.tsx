@@ -1,25 +1,28 @@
 import { useEffect, useState } from 'react';
 import { Plus } from 'lucide-react';
-import { useFoldDepth, useFoldGlobal, FoldDepthProvider } from './FoldContext';
+import { useFoldDepth, useFoldGlobal, useFoldVisibility, FoldDepthProvider, FoldVisibilityProvider } from './FoldContext';
 import styles from './Fold.module.css';
 
 interface FoldProps {
   children: React.ReactNode;
-  // title prop is unused in strict mode, removed to pass build
 }
 
 export const Fold = ({ children }: FoldProps) => {
   const depth = useFoldDepth();
   const { globalExpandLevel, registerDepth } = useFoldGlobal();
+  const isParentVisible = useFoldVisibility();
 
   const currentLevel = depth + 1;
 
+  // Always register depth because we are now rendering hidden
   useEffect(() => {
     registerDepth(currentLevel);
   }, [currentLevel, registerDepth]);
 
+  // Determine initial state
   const [isOpen, setIsOpen] = useState(globalExpandLevel >= currentLevel);
 
+  // Sync with Global Control
   useEffect(() => {
     if (globalExpandLevel >= currentLevel) {
       setIsOpen(true);
@@ -28,31 +31,69 @@ export const Fold = ({ children }: FoldProps) => {
     }
   }, [globalExpandLevel, currentLevel]);
 
+  // Sync with Parent Visibility (Reset on Collapse)
+  // If parent becomes invisible, we must close.
+  useEffect(() => {
+    if (!isParentVisible && isOpen) {
+      setIsOpen(false);
+    }
+  }, [isParentVisible, isOpen]);
+
   const toggle = () => setIsOpen(!isOpen);
+
+  // Determine if this fold is effectively visible to the user
+  // It is visible if the parent is visible AND this fold is open.
+  const isContentVisible = isParentVisible && isOpen;
 
   return (
     <div className={styles.wrapper}>
-      {!isOpen ? (
-        <div className={styles.collapsedContainer} onClick={toggle} title="Expand">
-          <div className={styles.collapsedLine} />
-          <button className={styles.expandButton} aria-label="Expand">
-            <Plus size={14} />
-          </button>
-        </div>
-      ) : (
-        <div className={styles.expandedContainer}>
-          <div
-            className={styles.leftRail}
-            onClick={toggle}
-            title="Collapse"
-          />
-          <div className={styles.content}>
-             <FoldDepthProvider depth={depth + 1}>
+      {/*
+         We always render children to allow them to register depth.
+         We toggle visibility using style display.
+         But wait, we have two visual states: Collapsed (Button) and Expanded (Rail + Content).
+
+         If !isOpen: Show Button. Hide Content.
+         If isOpen: Show Rail + Content.
+
+         But if !isParentVisible: The whole Fold is hidden by the parent's logic.
+         Wait, `styles.wrapper` is inside the parent's content div.
+         If parent is closed, parent's content div is `display: none`.
+         So this entire component is hidden.
+
+         So we only need to manage local toggling between Collapsed/Expanded views.
+      */}
+
+      {/* Collapsed View */}
+      <div
+        className={styles.collapsedContainer}
+        onClick={toggle}
+        title="Expand"
+        style={{ display: !isOpen ? 'flex' : 'none' }}
+      >
+        <div className={styles.collapsedLine} />
+        <button className={styles.expandButton} aria-label="Expand">
+          <Plus size={14} />
+        </button>
+      </div>
+
+      {/* Expanded View */}
+      <div
+        className={styles.expandedContainer}
+        style={{ display: isOpen ? 'flex' : 'none' }}
+      >
+        <div
+          className={styles.leftRail}
+          onClick={toggle}
+          title="Collapse"
+        />
+        <div className={styles.content}>
+           <FoldDepthProvider depth={depth + 1}>
+             <FoldVisibilityProvider isVisible={isContentVisible}>
                 {children}
-             </FoldDepthProvider>
-          </div>
+             </FoldVisibilityProvider>
+           </FoldDepthProvider>
         </div>
-      )}
+      </div>
     </div>
   );
 };

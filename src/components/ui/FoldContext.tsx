@@ -23,6 +23,11 @@ const FoldDepthContext = createContext<number>(0);
 
 export const useFoldDepth = () => useContext(FoldDepthContext);
 
+// Context for visibility chain (Render Hidden pattern)
+const FoldVisibilityContext = createContext<boolean>(true);
+
+export const useFoldVisibility = () => useContext(FoldVisibilityContext);
+
 export const FoldProvider = ({ children }: { children: React.ReactNode }) => {
   const [globalExpandLevel, setGlobalExpandLevel] = useState<number>(0);
   const [maxDepthDetected, setMaxDepthDetected] = useState<number>(0);
@@ -41,7 +46,9 @@ export const FoldProvider = ({ children }: { children: React.ReactNode }) => {
   return (
     <FoldGlobalContext.Provider value={value}>
       <FoldDepthContext.Provider value={0}>
-        {children}
+        <FoldVisibilityContext.Provider value={true}>
+          {children}
+        </FoldVisibilityContext.Provider>
       </FoldDepthContext.Provider>
     </FoldGlobalContext.Provider>
   );
@@ -53,5 +60,14 @@ export const FoldDepthProvider = ({ children, depth }: { children: React.ReactNo
     <FoldDepthContext.Provider value={depth}>
       {children}
     </FoldDepthContext.Provider>
+  );
+};
+
+// Component to manage visibility context
+export const FoldVisibilityProvider = ({ children, isVisible }: { children: React.ReactNode; isVisible: boolean }) => {
+  return (
+    <FoldVisibilityContext.Provider value={isVisible}>
+      {children}
+    </FoldVisibilityContext.Provider>
   );
 };

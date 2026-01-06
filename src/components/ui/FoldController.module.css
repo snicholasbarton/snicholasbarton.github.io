@@ -6,7 +6,8 @@
 }
 
 .stuck {
-  @apply bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border-gray-200 dark:border-gray-800 py-1.5 px-4 shadow-sm;
+  /* Default: slightly transparent (opacity handled via bg alpha). Solid on hover. */
+  @apply bg-white/70 dark:bg-gray-900/70 hover:bg-white dark:hover:bg-gray-900 backdrop-blur-md border-gray-200 dark:border-gray-800 py-1.5 px-4 shadow-sm;
 }
 
 .notStuck {
@@ -22,7 +23,7 @@
 }
 
 .depthButton {
-  @apply px-2.5 py-0.5 text-xs font-medium rounded-full transition-colors bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700;
+  @apply px-2.5 py-0.5 text-xs font-medium rounded-full transition-colors bg-gray-100/80 dark:bg-gray-800/80 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700;
 }
 
 .activeButton {
