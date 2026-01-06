@@ -88,6 +88,19 @@ The Fold is the worker unit. Its logic is a hybrid of local autonomy and global 
     2.  **Performance:** The DOM remains lightweight. The browser doesn't have to manage thousands of hidden nodes for a massive document.
     3.  **Dynamic Discovery:** Since children don't mount until the parent opens, the `registerDepth` calls for deep levels don't happen until they are revealed. This creates a "discovery" effect in the Controller: buttons for deeper levels appear progressively as the user explores.
 
+### 3.4 Comparison with Standard UI Patterns
+
+It is instructive to contrast the **Fold** system with the traditional **Accordion** pattern to highlight the architectural differences required by our "infinite nesting" goal.
+
+| Feature | Standard Accordion | Recursive Fold System |
+| :--- | :--- | :--- |
+| **Topology** | **Flat List:** Items are typically siblings (e.g., a list of FAQs). | **Tree:** Items can contain other items of the same type (e.g., a comment thread or deep outline). |
+| **State Scope** | **Sibling-Aware:** Often implements "mutex" logic (opening Item A closes Item B). | **Parent-Child & Global:** Independent at the sibling level, but strictly hierarchical (parent controls child) and globally influenced. |
+| **Lifecycle** | **Persistent:** Content is usually just hidden (`display: none`) to preserve form data or scroll position. | **Transient:** Content is often **unmounted** on collapse to ensure deeply nested states are reset, preventing a confusing "cluttered" state upon re-expansion. |
+| **Visuals** | **Panel/Header:** Distinct blocks with headers. | **Inline/Rail:** Integrated into flow content with subtle vertical rails indicating depth, preserving the reading flow of the document. |
+
+The Fold system's complexity arises specifically from the **Tree Topology** and **Transient Lifecycle**. In a flat accordion, state is O(N) where N is the number of items. In a recursive fold system, the state tree mirrors the DOM tree, and the "Unmount on Collapse" strategy is a vital optimization to prune this state tree dynamically.
+
 ## 4. Implementation Analysis
 
 Let us examine the specific code implementation to see how these theories manifest.
