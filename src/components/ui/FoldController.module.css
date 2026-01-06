@@ -1,30 +1,28 @@
 @reference "../../index.css";
 
 .container {
-  @apply sticky top-0 z-50 w-full mb-8 transition-all duration-300 ease-in-out border-b border-transparent;
+  /* top-20 = 5rem. Navbar is h-16 (4rem). So 1rem clearance. */
+  @apply sticky top-20 z-40 mb-8 transition-all duration-300 ease-in-out w-fit rounded-full border border-transparent;
 }
 
 .stuck {
-  @apply bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border-gray-200 dark:border-gray-800 py-2 shadow-sm;
-  /* Negative margin to pull it out of the container padding if needed,
-     but since it's inside prose, it might be constrained.
-     We'll keep it simple first. */
+  @apply bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border-gray-200 dark:border-gray-800 py-1.5 px-4 shadow-sm;
 }
 
 .notStuck {
-  @apply bg-transparent py-4;
+  @apply bg-transparent py-2 border-transparent;
 }
 
 .controls {
-  @apply flex items-center justify-between gap-4 max-w-full overflow-x-auto;
+  @apply flex items-center gap-3 overflow-x-auto;
 }
 
 .buttonGroup {
-  @apply flex items-center gap-2;
+  @apply flex items-center gap-1.5;
 }
 
 .depthButton {
-  @apply px-3 py-1 text-sm rounded-md transition-colors bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700;
+  @apply px-2.5 py-0.5 text-xs font-medium rounded-full transition-colors bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700;
 }
 
 .activeButton {
@@ -32,5 +30,5 @@
 }
 
 .label {
-  @apply text-sm font-medium text-gray-500 dark:text-gray-400 mr-2;
+  @apply text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider;
 }

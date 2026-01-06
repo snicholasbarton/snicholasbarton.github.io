@@ -14,7 +14,14 @@ export const FoldController = () => {
       ([entry]) => {
         setIsStuck(!entry.isIntersecting);
       },
-      { threshold: 1, rootMargin: '-1px 0px 0px 0px' }
+      // rootMargin top needs to account for the offset.
+      // The sentinel is placed just above the element.
+      // If element is sticky at top: 5rem, the sentinel hits top of viewport when element hits top of viewport?
+      // No, sentinel scrolls with content. Element sticks.
+      // When sentinel scrolls past the sticky point, it's "stuck".
+      // The sticky point is 80px (5rem).
+      // So we want to trigger when sentinel hits 80px from top.
+      { threshold: 1, rootMargin: '-81px 0px 0px 0px' }
     );
 
     if (sentinelRef.current) {
@@ -26,7 +33,15 @@ export const FoldController = () => {
     };
   }, []);
 
-  const levels = Array.from({ length: Math.min(maxDepthDetected + 1, 5) }, (_, i) => i + 1);
+  // Fix: Show exactly maxDepthDetected levels.
+  // If maxDepthDetected is 3, we want [1, 2, 3]. Length = 3.
+  const levels = Array.from({ length: Math.min(maxDepthDetected, 5) }, (_, i) => i + 1);
+
+  // If no folds are detected yet (or just 0), showing "None" and "All" is enough?
+  // Or at least "L1"?
+  // If maxDepthDetected is 0, levels is empty.
+  // But usually we have at least L1 if there are folds.
+  // Let's assume maxDepthDetected updates to at least 1 if there is a fold.
 
   return (
     <>
@@ -34,8 +49,8 @@ export const FoldController = () => {
       <div className={cn(styles.container, isStuck ? styles.stuck : styles.notStuck)}>
         <div className={styles.controls}>
           <div className="flex items-center">
-             <Layers className="w-4 h-4 mr-2 text-gray-500" />
-             <span className={styles.label}>Fold Depth:</span>
+             <Layers className="w-3.5 h-3.5 mr-1.5 text-gray-500" />
+             <span className={styles.label}>Depth:</span>
           </div>
 
           <div className={styles.buttonGroup}>
