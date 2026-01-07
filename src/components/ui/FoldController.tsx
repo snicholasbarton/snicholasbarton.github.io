@@ -56,7 +56,7 @@ export const FoldController = () => {
           <div className={styles.buttonGroup}>
             <button
               onClick={() => setGlobalExpandLevel(0)}
-              className={cn(styles.depthButton, globalExpandLevel === 0 && styles.activeButton)}
+              className={cn(styles.depthButton)}
               title="Collapse All"
             >
               None
@@ -66,19 +66,11 @@ export const FoldController = () => {
               <button
                 key={level}
                 onClick={() => setGlobalExpandLevel(level)}
-                className={cn(styles.depthButton, globalExpandLevel === level && styles.activeButton)}
+                className={cn(styles.depthButton)}
               >
                 L{level}
               </button>
             ))}
-
-            <button
-               onClick={() => setGlobalExpandLevel(100)}
-               className={cn(styles.depthButton, globalExpandLevel >= 100 && styles.activeButton)}
-               title="Expand All"
-            >
-              All
-            </button>
           </div>
         </div>
       </div>

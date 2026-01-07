@@ -6,8 +6,13 @@
 }
 
 .stuck {
-  /* Default: slightly transparent (opacity handled via bg alpha). Solid on hover. */
-  @apply bg-white/70 dark:bg-gray-900/70 hover:bg-white dark:hover:bg-gray-900 backdrop-blur-md border-gray-200 dark:border-gray-800 py-1.5 px-4 shadow-sm;
+  /* Default: more transparent. Solid on hover or focus-within. */
+  @apply bg-white/40 dark:bg-gray-900/40 backdrop-blur-md border-gray-200 dark:border-gray-800 py-1.5 px-4 shadow-sm transition-colors duration-300;
+}
+
+.stuck:hover,
+.stuck:focus-within {
+  @apply bg-white/90 dark:bg-gray-900/90;
 }
 
 .notStuck {
@@ -23,11 +28,7 @@
 }
 
 .depthButton {
-  @apply px-2.5 py-0.5 text-xs font-medium rounded-full transition-colors bg-gray-100/80 dark:bg-gray-800/80 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700;
-}
-
-.activeButton {
-  @apply bg-primary text-primary-foreground hover:bg-primary/90;
+  @apply px-2.5 py-0.5 text-xs font-medium rounded-full transition-colors bg-gray-100/80 dark:bg-gray-800/80 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 dark:focus:ring-gray-600;
 }
 
 .label {
