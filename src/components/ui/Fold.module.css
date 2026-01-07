@@ -27,8 +27,10 @@
 }
 
 .leftRail {
-  @apply flex-shrink-0 w-1 rounded-full cursor-pointer mr-4 transition-colors bg-gray-200 dark:bg-gray-800 hover:bg-gray-400 dark:hover:bg-gray-600;
-  /* Make sure it spans the full height of the content */
+  /* Reduced width from w-1 (4px) to w-[3px] */
+  /* Reduced margin from mr-4 (16px) to mr-2 (8px) */
+  /* This saves ~9px per nesting level, preventing cramping. */
+  @apply flex-shrink-0 w-[3px] rounded-full cursor-pointer mr-2 transition-colors bg-gray-200 dark:bg-gray-800 hover:bg-gray-400 dark:hover:bg-gray-600;
 }
 
 .content {
