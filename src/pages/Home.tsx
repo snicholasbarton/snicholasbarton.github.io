@@ -6,15 +6,19 @@ import { Heading, SubHeading, Paragraph } from '../components/ui/Typography';
 import { Button } from '../components/ui/Button';
 import styles from './Home.module.css';
 
-interface TimelineItemProps {
-  title: string;
+interface TimelineSubItem {
   subtitle: string;
   date: string;
   description: string;
-  icon: React.ReactNode;
 }
 
-const TimelineItem = ({ title, subtitle, date, description, icon }: TimelineItemProps) => {
+interface TimelineItemProps {
+  title: string;
+  icon: React.ReactNode;
+  items: TimelineSubItem[];
+}
+
+const TimelineItem = ({ title, icon, items }: TimelineItemProps) => {
   return (
     <motion.div
       initial={{ opacity: 0, x: -50 }}
@@ -26,14 +30,22 @@ const TimelineItem = ({ title, subtitle, date, description, icon }: TimelineItem
       <div className={styles.timelineIconContainer}>
         {icon}
       </div>
-      <div className={styles.timelineHeader}>
-        <SubHeading className={styles.timelineTitle}>{title}</SubHeading>
-        <span className={styles.timelineDate}>{date}</span>
+
+      <SubHeading className={`${styles.timelineTitle} mb-4`}>{title}</SubHeading>
+
+      <div className="space-y-6 mt-4">
+        {items.map((item, index) => (
+          <div key={index}>
+            <div className={styles.timelineHeader}>
+              <div className={styles.timelineSubtitle}>{item.subtitle}</div>
+              <span className={styles.timelineDate}>{item.date}</span>
+            </div>
+            <Paragraph className={styles.timelineDescription}>
+              {item.description}
+            </Paragraph>
+          </div>
+        ))}
       </div>
-      <div className={styles.timelineSubtitle}>{subtitle}</div>
-      <Paragraph className={styles.timelineDescription}>
-        {description}
-      </Paragraph>
     </motion.div>
   );
 };
@@ -88,18 +100,31 @@ export const Home = () => {
           </SubHeading>
           <div className="space-y-2">
             <TimelineItem
-              title="Senior Software Engineer"
-              subtitle="Tech Corp Inc."
-              date="2021 - Present"
-              description="Led the development of a high-traffic e-commerce platform. Improved site performance by 40% and mentored junior developers. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+              title="Tech Corp Inc."
               icon={<Briefcase size={16} />}
+              items={[
+                {
+                  subtitle: "Senior Software Engineer",
+                  date: "2021 - Present",
+                  description: "Led the development of a high-traffic e-commerce platform. Improved site performance by 40% and mentored junior developers. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                },
+                {
+                  subtitle: "Software Engineer",
+                  date: "2019 - 2021",
+                  description: "Collaborated with cross-functional teams to design and implement new features. Optimized database queries and improved application response times."
+                }
+              ]}
             />
             <TimelineItem
-              title="Software Engineer"
-              subtitle="Startup Solutions"
-              date="2018 - 2021"
-              description="Full-stack development using React and Node.js. Implemented real-time features using WebSockets. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+              title="Startup Solutions"
               icon={<Briefcase size={16} />}
+              items={[
+                {
+                  subtitle: "Software Engineer",
+                  date: "2018 - 2019",
+                  description: "Full-stack development using React and Node.js. Implemented real-time features using WebSockets. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+                }
+              ]}
             />
           </div>
         </div>
@@ -110,11 +135,15 @@ export const Home = () => {
           </SubHeading>
           <div className="space-y-2">
             <TimelineItem
-              title="BS Computer Science"
-              subtitle="University of Technology"
-              date="2014 - 2018"
-              description="Graduated with Honors. Focused on Distributed Systems and Artificial Intelligence."
+              title="University of Technology"
               icon={<GraduationCap size={16} />}
+              items={[
+                {
+                  subtitle: "BS Computer Science",
+                  date: "2014 - 2018",
+                  description: "Graduated with Honors. Focused on Distributed Systems and Artificial Intelligence."
+                }
+              ]}
             />
           </div>
         </div>
