@@ -41,11 +41,11 @@
 }
 
 .timelineSubtitle {
-  @apply text-lg font-medium text-primary mb-2;
+  @apply text-lg font-medium text-primary;
 }
 
 .timelineDescription {
-  @apply text-base;
+  @apply text-base -mt-2;
 }
 
 .skillPill {
