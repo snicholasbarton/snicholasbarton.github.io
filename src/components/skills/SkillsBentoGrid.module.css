@@ -1,0 +1,94 @@
+@reference "../../index.css";
+
+.gridWrapper {
+  @apply relative; /* Anchor for the absolute overlay */
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .gridContainer {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .gridContainer {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-auto-rows: 140px;
+  }
+}
+
+.tile {
+  @apply relative rounded-xl border p-4 cursor-pointer overflow-hidden flex flex-col justify-between transition-shadow hover:shadow-lg bg-white dark:bg-gray-900;
+  /* Add default background to avoid transparency issues during overlap if color classes don't cover it */
+}
+
+/* On mobile, ignore grid config and stack */
+@media (max-width: 1023px) {
+  .tile {
+    grid-column: span 1 !important;
+    grid-row: span 1 !important;
+    min-height: 120px;
+  }
+}
+
+.tileContent {
+  @apply flex flex-col h-full justify-between;
+}
+
+.tileTitle {
+  @apply font-bold text-lg;
+}
+
+.tileCategory {
+  @apply text-xs opacity-70 font-medium uppercase tracking-wider;
+}
+
+/* Expanded Overlay - Now scoped to the grid container */
+.overlayBackdrop {
+  @apply absolute inset-0 z-10 rounded-xl overflow-hidden;
+  /* We don't necessarily need a dark backdrop if the card covers everything,
+     but it helps if the card has margins or rounded corners that might show edges.
+     However, the user said "cover the entirety of the skills grid". */
+}
+
+.expandedCard {
+  @apply w-full h-full bg-white dark:bg-gray-900 rounded-xl p-6 shadow-2xl border overflow-y-auto;
+}
+
+.closeButton {
+  @apply absolute top-4 right-4 p-2 rounded-full hover:bg-black/10 dark:hover:bg-white/10 transition-colors z-20;
+}
+
+.expandedHeader {
+  @apply mb-6;
+}
+
+.expandedTitle {
+  @apply text-3xl font-bold mb-2;
+}
+
+.expandedCategory {
+  @apply text-sm font-medium uppercase tracking-wider opacity-70 mb-4 inline-block px-2 py-1 rounded bg-black/5 dark:bg-white/5;
+}
+
+.expandedDetails {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-6;
+}
+
+.detailSection {
+  @apply space-y-2;
+}
+
+.detailLabel {
+  @apply text-sm font-semibold uppercase tracking-wider opacity-60;
+}
+
+.subSkillTag {
+  @apply inline-block px-3 py-1 rounded-full bg-black/5 dark:bg-white/5 text-sm mr-2 mb-2;
+}
