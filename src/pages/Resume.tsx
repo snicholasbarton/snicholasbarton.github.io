@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Briefcase, GraduationCap, Code, Megaphone, UserRound } from 'lucide-react';
+import { Briefcase, GraduationCap, Code, Megaphone, UserRound, Quote } from 'lucide-react';
 import { Section } from '../components/ui/Section';
 import { SubHeading, Paragraph, UnorderedList, ListItem, Link} from '../components/ui/Typography';
 import styles from './Resume.module.css';
@@ -62,6 +62,29 @@ const SkillPill = ({ skill }: { skill: string }) => (
   </motion.span>
 );
 
+interface ReferenceQuoteProps {
+  text: string;
+  author: string;
+  role: string;
+}
+
+const ReferenceQuote = ({ text, author, role }: ReferenceQuoteProps) => (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5 }}
+    viewport={{ once: true }}
+    className={styles.quoteCard}
+  >
+    <Quote className={styles.quoteIcon} />
+    <p className={styles.quoteText}>"{text}"</p>
+    <div className={styles.quoteFooter}>
+      <span className={styles.quoteAuthor}>{author}</span>
+      <span className={styles.quoteRole}>{role}</span>
+    </div>
+  </motion.div>
+);
+
 const sseDescription = (<UnorderedList>
     <ListItem><b>Technical Vision:</b> Defined long-term product strategy to grow streaming platform usage 100x from 2023-2025</ListItem>
     <ListItem><b>High Availability Infrastructure:</b> Architected a no-downtime orchestration framework for stateful Flink jobs, enabling infrastructure changes, framework updates, and logic deployments without data loss or interruption</ListItem>
@@ -111,8 +134,27 @@ export const Resume = () => {
          <div className={styles.sectionBlock}>
             <SubHeading className={styles.experienceHeading}>
                 <Megaphone className={styles.experienceIcon} /> Professional References
-                {/* Fill in details */}
             </SubHeading>
+            <div className={styles.referencesGrid}>
+                <ReferenceQuote
+                    text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                    author="Jane Doe"
+                    role="CTO, TechCorp"
+                />
+                <ReferenceQuote
+                    text="Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+                    author="John Smith"
+                    role="VP of Engineering, DataSystems"
+                />
+                <ReferenceQuote
+                    text="Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+                    author="Emily White"
+                    role="Senior Product Manager, InnovateInc"
+                />
+            </div>
+            <div className={styles.referencesNotice}>
+                Full references available upon request
+            </div>
         </div>
         <div className={styles.sectionBlock}>
           <SubHeading className={styles.experienceHeading}>
