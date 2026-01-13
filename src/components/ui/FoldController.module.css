@@ -7,7 +7,7 @@
 
 .stuck {
   /* Default: more transparent. Solid on hover or focus-within. */
-  @apply bg-white/40 dark:bg-gray-900/40 backdrop-blur-md border-gray-200 dark:border-gray-800 py-1.5 px-4 shadow-sm transition-colors duration-300;
+  @apply bg-white/40 dark:bg-gray-900/50 backdrop-blur-md border-gray-200 dark:border-gray-800 py-1.5 px-4 shadow-sm transition-colors duration-300;
 }
 
 .stuck:hover,

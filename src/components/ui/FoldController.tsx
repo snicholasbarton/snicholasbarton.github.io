@@ -15,12 +15,8 @@ export const FoldController = () => {
         setIsStuck(!entry.isIntersecting);
       },
       // rootMargin top needs to account for the offset.
-      // The sentinel is placed just above the element.
-      // If element is sticky at top: 5rem, the sentinel hits top of viewport when element hits top of viewport?
-      // No, sentinel scrolls with content. Element sticks.
       // When sentinel scrolls past the sticky point, it's "stuck".
-      // The sticky point is 80px (5rem).
-      // So we want to trigger when sentinel hits 80px from top.
+      // The sticky point is 80px (5rem)
       { threshold: 1, rootMargin: '-81px 0px 0px 0px' }
     );
 
@@ -33,15 +29,7 @@ export const FoldController = () => {
     };
   }, []);
 
-  // Fix: Show exactly maxDepthDetected levels.
-  // If maxDepthDetected is 3, we want [1, 2, 3]. Length = 3.
   const levels = Array.from({ length: Math.min(maxDepthDetected, 5) }, (_, i) => i + 1);
-
-  // If no folds are detected yet (or just 0), showing "None" and "All" is enough?
-  // Or at least "L1"?
-  // If maxDepthDetected is 0, levels is empty.
-  // But usually we have at least L1 if there are folds.
-  // Let's assume maxDepthDetected updates to at least 1 if there is a fold.
 
   return (
     <>

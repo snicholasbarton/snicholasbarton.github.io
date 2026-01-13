@@ -47,22 +47,6 @@ export const Fold = ({ children }: FoldProps) => {
 
   return (
     <div className={styles.wrapper}>
-      {/*
-         We always render children to allow them to register depth.
-         We toggle visibility using style display.
-         But wait, we have two visual states: Collapsed (Button) and Expanded (Rail + Content).
-
-         If !isOpen: Show Button. Hide Content.
-         If isOpen: Show Rail + Content.
-
-         But if !isParentVisible: The whole Fold is hidden by the parent's logic.
-         Wait, `styles.wrapper` is inside the parent's content div.
-         If parent is closed, parent's content div is `display: none`.
-         So this entire component is hidden.
-
-         So we only need to manage local toggling between Collapsed/Expanded views.
-      */}
-
       {/* Collapsed View */}
       <div
         className={styles.collapsedContainer}
