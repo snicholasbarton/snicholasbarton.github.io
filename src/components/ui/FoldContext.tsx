@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useState, useMemo, useCallback } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useMemo,
+  useCallback,
+} from "react";
 
 // Context for the global controller
 interface FoldGlobalContextType {
@@ -8,12 +14,14 @@ interface FoldGlobalContextType {
   registerDepth: (depth: number) => void;
 }
 
-const FoldGlobalContext = createContext<FoldGlobalContextType | undefined>(undefined);
+const FoldGlobalContext = createContext<FoldGlobalContextType | undefined>(
+  undefined
+);
 
 export const useFoldGlobal = () => {
   const context = useContext(FoldGlobalContext);
   if (!context) {
-    throw new Error('useFoldGlobal must be used within a FoldProvider');
+    throw new Error("useFoldGlobal must be used within a FoldProvider");
   }
   return context;
 };
@@ -33,15 +41,18 @@ export const FoldProvider = ({ children }: { children: React.ReactNode }) => {
   const [maxDepthDetected, setMaxDepthDetected] = useState<number>(0);
 
   const registerDepth = useCallback((depth: number) => {
-    setMaxDepthDetected(prev => Math.max(prev, depth));
+    setMaxDepthDetected((prev) => Math.max(prev, depth));
   }, []);
 
-  const value = useMemo(() => ({
-    globalExpandLevel,
-    setGlobalExpandLevel,
-    maxDepthDetected,
-    registerDepth
-  }), [globalExpandLevel, maxDepthDetected, registerDepth]);
+  const value = useMemo(
+    () => ({
+      globalExpandLevel,
+      setGlobalExpandLevel,
+      maxDepthDetected,
+      registerDepth,
+    }),
+    [globalExpandLevel, maxDepthDetected, registerDepth]
+  );
 
   return (
     <FoldGlobalContext.Provider value={value}>
@@ -55,7 +66,13 @@ export const FoldProvider = ({ children }: { children: React.ReactNode }) => {
 };
 
 // Component to increase depth for children
-export const FoldDepthProvider = ({ children, depth }: { children: React.ReactNode; depth: number }) => {
+export const FoldDepthProvider = ({
+  children,
+  depth,
+}: {
+  children: React.ReactNode;
+  depth: number;
+}) => {
   return (
     <FoldDepthContext.Provider value={depth}>
       {children}
@@ -64,7 +81,13 @@ export const FoldDepthProvider = ({ children, depth }: { children: React.ReactNo
 };
 
 // Component to manage visibility context
-export const FoldVisibilityProvider = ({ children, isVisible }: { children: React.ReactNode; isVisible: boolean }) => {
+export const FoldVisibilityProvider = ({
+  children,
+  isVisible,
+}: {
+  children: React.ReactNode;
+  isVisible: boolean;
+}) => {
   return (
     <FoldVisibilityContext.Provider value={isVisible}>
       {children}

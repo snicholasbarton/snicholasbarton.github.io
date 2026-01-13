@@ -1,6 +1,6 @@
-import React from 'react';
-import { cn } from '../../lib/utils';
-import styles from './Card.module.css';
+import React from "react";
+import { cn } from "../../lib/utils";
+import styles from "./Card.module.css";
 
 interface CardProps {
   children: React.ReactNode;
@@ -8,9 +8,5 @@ interface CardProps {
 }
 
 export const Card = ({ children, className }: CardProps) => {
-  return (
-    <div className={cn(styles.card, className)}>
-      {children}
-    </div>
-  );
+  return <div className={cn(styles.card, className)}>{children}</div>;
 };

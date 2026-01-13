@@ -1,7 +1,13 @@
-import { useEffect, useState } from 'react';
-import { Plus } from 'lucide-react';
-import { useFoldDepth, useFoldGlobal, useFoldVisibility, FoldDepthProvider, FoldVisibilityProvider } from './FoldContext';
-import styles from './Fold.module.css';
+import { useEffect, useState } from "react";
+import { Plus } from "lucide-react";
+import {
+  useFoldDepth,
+  useFoldGlobal,
+  useFoldVisibility,
+  FoldDepthProvider,
+  FoldVisibilityProvider,
+} from "./FoldContext";
+import styles from "./Fold.module.css";
 
 interface FoldProps {
   children: React.ReactNode;
@@ -52,7 +58,7 @@ export const Fold = ({ children }: FoldProps) => {
         className={styles.collapsedContainer}
         onClick={toggle}
         title="Expand"
-        style={{ display: !isOpen ? 'flex' : 'none' }}
+        style={{ display: !isOpen ? "flex" : "none" }}
       >
         <div className={styles.collapsedLine} />
         <button className={styles.expandButton} aria-label="Expand">
@@ -63,19 +69,15 @@ export const Fold = ({ children }: FoldProps) => {
       {/* Expanded View */}
       <div
         className={styles.expandedContainer}
-        style={{ display: isOpen ? 'flex' : 'none' }}
+        style={{ display: isOpen ? "flex" : "none" }}
       >
-        <div
-          className={styles.leftRail}
-          onClick={toggle}
-          title="Collapse"
-        />
+        <div className={styles.leftRail} onClick={toggle} title="Collapse" />
         <div className={styles.content}>
-           <FoldDepthProvider depth={depth + 1}>
-             <FoldVisibilityProvider isVisible={isContentVisible}>
-                {children}
-             </FoldVisibilityProvider>
-           </FoldDepthProvider>
+          <FoldDepthProvider depth={depth + 1}>
+            <FoldVisibilityProvider isVisible={isContentVisible}>
+              {children}
+            </FoldVisibilityProvider>
+          </FoldDepthProvider>
         </div>
       </div>
     </div>

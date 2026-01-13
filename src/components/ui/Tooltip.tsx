@@ -1,7 +1,7 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
-import { cn } from '../../lib/utils';
-import styles from './Tooltip.module.css';
+import React, { useState, useRef, useEffect } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { cn } from "../../lib/utils";
+import styles from "./Tooltip.module.css";
 
 interface TooltipProps {
   children: React.ReactNode;
@@ -18,17 +18,20 @@ export function Tooltip({ children, content, className }: TooltipProps) {
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target as Node)
+      ) {
         setIsClicked(false);
       }
     }
 
     if (isClicked) {
-      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener("mousedown", handleClickOutside);
     }
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isClicked]);
 

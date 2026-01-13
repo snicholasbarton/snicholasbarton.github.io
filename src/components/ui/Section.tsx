@@ -1,6 +1,6 @@
-import React from 'react';
-import { cn } from '../../lib/utils';
-import styles from './Section.module.css';
+import React from "react";
+import { cn } from "../../lib/utils";
+import styles from "./Section.module.css";
 
 interface SectionProps {
   children: React.ReactNode;
