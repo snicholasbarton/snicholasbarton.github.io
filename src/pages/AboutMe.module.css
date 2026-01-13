@@ -1,0 +1,49 @@
+@reference "../index.css";
+
+.introText {
+  @apply intro-text;
+}
+
+.stack {
+  @apply space-y-12;
+}
+
+.item {
+  @apply flex flex-col md:flex-row gap-8 items-start;
+}
+
+.iconContainer {
+  @apply p-4 rounded-lg;
+}
+
+.iconBlue {
+  @apply bg-blue-100 dark:bg-blue-900/30;
+}
+
+.iconGreen {
+  @apply bg-green-100 dark:bg-green-900/30;
+}
+
+.iconOrange {
+  @apply bg-orange-100 dark:bg-orange-900/30;
+}
+
+.iconPurple {
+  @apply bg-purple-100 dark:bg-purple-900/30;
+}
+
+.iconActivity {
+  @apply text-purple-600 dark:text-purple-400;
+}
+
+.iconBird {
+  @apply text-green-600 dark:text-green-400;
+}
+
+.iconChefHat {
+  @apply text-orange-600 dark:text-orange-400;
+}
+
+.iconFish {
+  @apply text-blue-600 dark:text-blue-400;
+}

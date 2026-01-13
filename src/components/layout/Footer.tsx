@@ -17,12 +17,12 @@ export const Footer = () => {
           <Link to="/about-site" className={styles.link}>
             How this site works
           </Link>
-          <a href="#" className={styles.socialLink}>
+          <a href="https://github.com/snicholasbarton" className={styles.socialLink}>
             <span className="sr-only">GitHub</span>
             {/* GitHub Icon Placeholder */}
             GitHub
           </a>
-          <a href="#" className={styles.socialLink}>
+          <a href="https://www.linkedin.com/in/nicholas-barton-a7311a113" className={styles.socialLink}>
             <span className="sr-only">LinkedIn</span>
             {/* LinkedIn Icon Placeholder */}
             LinkedIn

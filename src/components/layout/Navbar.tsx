@@ -13,8 +13,9 @@ export const Navbar = () => {
 
   const navLinks = [
     { name: 'Home', path: '/' },
+    { name: 'Resume', path: '/resume' },
     { name: 'Blog', path: '/blog' },
-    { name: 'Hobbies', path: '/hobbies' },
+    { name: 'About Me', path: '/about-me' },
   ];
 
   const toggleTheme = () => {

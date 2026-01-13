@@ -9,11 +9,11 @@
 }
 
 .paragraph {
-  @apply text-lg text-gray-700 dark:text-gray-300 leading-relaxed;
+  @apply text-lg text-gray-950 dark:text-gray-300 leading-relaxed;
 }
 
 .body {
-  @apply text-sm text-gray-700 dark:text-gray-300 leading-relaxed;
+  @apply text-sm text-gray-950 dark:text-gray-300 leading-relaxed;
 }
 
 .list {
@@ -21,5 +21,9 @@
 }
 
 .listItem {
-  @apply text-sm text-gray-700 dark:text-gray-300 leading-relaxed list-disc ml-5;
+  @apply text-sm text-gray-950 dark:text-gray-300 leading-relaxed list-disc ml-5;
+}
+
+.link {
+  @apply text-primary underline;
 }
