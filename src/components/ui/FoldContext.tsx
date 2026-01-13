@@ -15,7 +15,7 @@ interface FoldGlobalContextType {
 }
 
 const FoldGlobalContext = createContext<FoldGlobalContextType | undefined>(
-  undefined
+  undefined,
 );
 
 export const useFoldGlobal = () => {
@@ -51,7 +51,7 @@ export const FoldProvider = ({ children }: { children: React.ReactNode }) => {
       maxDepthDetected,
       registerDepth,
     }),
-    [globalExpandLevel, maxDepthDetected, registerDepth]
+    [globalExpandLevel, maxDepthDetected, registerDepth],
   );
 
   return (

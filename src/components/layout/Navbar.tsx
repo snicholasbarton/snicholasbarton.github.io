@@ -44,7 +44,7 @@ export const Navbar = () => {
                     styles.link,
                     location.pathname === link.path
                       ? styles.linkActive
-                      : styles.linkInactive
+                      : styles.linkInactive,
                   )}
                 >
                   {link.name}
@@ -96,7 +96,7 @@ export const Navbar = () => {
                   styles.mobileLink,
                   location.pathname === link.path
                     ? styles.linkActive
-                    : styles.linkInactive
+                    : styles.linkInactive,
                 )}
               >
                 {link.name}
