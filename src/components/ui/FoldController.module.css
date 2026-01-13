@@ -1,0 +1,36 @@
+@reference "../../index.css";
+
+.container {
+  /* top-20 = 5rem. Navbar is h-16 (4rem). So 1rem clearance. */
+  @apply sticky top-20 z-40 mb-8 transition-all duration-300 ease-in-out w-fit rounded-full border border-transparent;
+}
+
+.stuck {
+  /* Default: more transparent. Solid on hover or focus-within. */
+  @apply bg-white/40 dark:bg-gray-900/50 backdrop-blur-md border-gray-200 dark:border-gray-800 py-1.5 px-4 shadow-sm transition-colors duration-300;
+}
+
+.stuck:hover,
+.stuck:focus-within {
+  @apply bg-white/90 dark:bg-gray-900/90;
+}
+
+.notStuck {
+  @apply bg-transparent py-2 border-transparent;
+}
+
+.controls {
+  @apply flex items-center gap-3 overflow-x-auto;
+}
+
+.buttonGroup {
+  @apply flex items-center gap-1.5;
+}
+
+.depthButton {
+  @apply px-2.5 py-0.5 text-xs font-medium rounded-full transition-colors bg-gray-100/80 dark:bg-gray-800/80 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 dark:focus:ring-gray-600;
+}
+
+.label {
+  @apply text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider;
+}

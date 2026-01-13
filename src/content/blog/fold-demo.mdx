@@ -1,0 +1,56 @@
+import { Fold } from '../../components/ui/Fold';
+import { FoldController } from '../../components/ui/FoldController';
+
+<FoldController />
+
+# Deep Dive: The Fold Component
+
+This post demonstrates the **Fold** component functionality. It allows nesting content at multiple levels of depth, with a global controller to manage visibility.
+
+## Level 1: Introduction
+
+This is the top-level content. It is always visible (Depth 0).
+
+<Fold>
+  ### Level 1 Expanded
+
+  You have expanded the first fold! This content is considered **Depth 1**.
+
+  Inside here, we can go deeper.
+
+  <Fold>
+    #### Level 2: The Rabbit Hole
+
+    Now we are at **Depth 2**. Things are getting more detailed here.
+
+    *   This content is hidden by default if global setting is less than 2.
+    *   It has a line on the left indicating nesting.
+
+    <Fold>
+       ##### Level 3: The Core
+
+       Welcome to **Depth 3**. This is for the truly curious.
+
+       > "The details are not the details. They make the design." - Charles Eames
+
+       You can collapse this specific section by clicking the left rail.
+       Or collapse the parent (Level 2) to hide this too.
+    </Fold>
+  </Fold>
+
+  Here is some more Level 1 content after the nested block.
+</Fold>
+
+## Another Top Level Section
+
+<Fold>
+  ### Level 1 (Part B)
+
+  This is another fold at the root level.
+
+  <Fold>
+     #### Level 2 (Part B)
+
+     Just checking that multiple independent folds work.
+  </Fold>
+</Fold>

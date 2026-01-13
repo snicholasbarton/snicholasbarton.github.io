@@ -1,0 +1,38 @@
+@reference "../../index.css";
+
+.wrapper {
+  @apply my-4;
+}
+
+/* Collapsed State */
+.collapsedContainer {
+  @apply relative flex items-center justify-center py-2 cursor-pointer;
+}
+
+.collapsedLine {
+  @apply absolute left-0 right-0 h-[1px] bg-gray-200 dark:bg-gray-800 transition-colors;
+}
+
+.collapsedContainer:hover .collapsedLine {
+  @apply bg-gray-300 dark:bg-gray-700;
+}
+
+.expandButton {
+  @apply relative z-10 flex items-center justify-center w-6 h-6 rounded-full bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 text-gray-500 hover:text-primary hover:border-primary transition-colors shadow-sm;
+}
+
+/* Expanded State */
+.expandedContainer {
+  @apply flex relative;
+}
+
+.leftRail {
+  /* Reduced width from w-1 (4px) to w-[3px] */
+  /* Reduced margin from mr-4 (16px) to mr-2 (8px) */
+  /* This saves ~9px per nesting level, preventing cramping. */
+  @apply flex-shrink-0 w-[3px] rounded-full cursor-pointer mr-3 transition-colors bg-gray-200 dark:bg-gray-800 hover:bg-gray-400 dark:hover:bg-gray-600;
+}
+
+.content {
+  @apply flex-grow min-w-0; /* min-w-0 to prevent flex item from overflowing */
+}
