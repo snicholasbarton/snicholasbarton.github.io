@@ -4,8 +4,9 @@ import { ThemeProvider } from './hooks/useTheme';
 import { Home } from './pages/Home';
 import { Blog } from './pages/Blog';
 import { AboutSite } from './pages/AboutSite';
-import { Hobbies } from './pages/Hobbies';
+import { AboutMe } from './pages/AboutMe';
 import { AiStatement } from './pages/AiStatement';
+import { Resume } from './pages/Resume';
 
 function App() {
   return (
@@ -14,10 +15,11 @@ function App() {
         <Layout>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/resume" element={<Resume />} />
             <Route path="/blog/*" element={<Blog />} />
             <Route path="/about-site" element={<AboutSite />} />
             <Route path="/ai-statement" element={<AiStatement />} />
-            <Route path="/hobbies" element={<Hobbies />} />
+            <Route path="/about-me" element={<AboutMe />} />
           </Routes>
         </Layout>
       </Router>

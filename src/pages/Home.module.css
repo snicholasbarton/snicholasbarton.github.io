@@ -4,54 +4,6 @@
   @apply mb-20;
 }
 
-.resumeSection {
-  @apply scroll-mt-20;
-}
-
-.sectionBlock {
-  @apply mb-16;
-}
-
-.experienceHeading {
-  @apply text-3xl mb-8 flex items-center;
-}
-
-.experienceIcon {
-  @apply mr-3;
-}
-
-.timelineItem {
-  @apply relative pl-8 pb-12 border-l-2 border-gray-200 dark:border-gray-800 last:pb-0;
-}
-
-.timelineIconContainer {
-  @apply absolute top-0 left-[-9px] bg-background p-1 border-2 border-primary rounded-full text-primary;
-}
-
-.timelineHeader {
-  @apply flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-2;
-}
-
-.timelineTitle {
-  @apply !mb-0 text-xl;
-}
-
-.timelineDate {
-  @apply text-sm text-gray-500 dark:text-gray-400 font-mono;
-}
-
-.timelineSubtitle {
-  @apply text-lg font-medium text-primary;
-}
-
-.timelineDescription {
-  @apply text-base -mt-2;
-}
-
-.skillPill {
-  @apply inline-block bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 px-3 py-1 rounded-full text-sm font-medium mr-2 mb-2;
-}
-
 .heroHeading {
   @apply text-4xl sm:text-6xl;
 }
@@ -66,8 +18,4 @@
 
 .heroActions {
   @apply mt-8 flex space-x-4;
-}
-
-.skillsContainer {
-  @apply flex flex-wrap;
 }
