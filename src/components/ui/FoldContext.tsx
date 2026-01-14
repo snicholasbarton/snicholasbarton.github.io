@@ -15,7 +15,7 @@ interface FoldGlobalContextType {
 }
 
 const FoldGlobalContext = createContext<FoldGlobalContextType | undefined>(
-  undefined
+  undefined,
 );
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -54,7 +54,7 @@ export const FoldProvider = ({ children }: { children: React.ReactNode }) => {
       maxDepthDetected,
       registerDepth,
     }),
-    [globalExpandLevel, maxDepthDetected, registerDepth]
+    [globalExpandLevel, maxDepthDetected, registerDepth],
   );
 
   return (
