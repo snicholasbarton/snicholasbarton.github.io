@@ -51,3 +51,35 @@
 .skillsContainer {
   @apply flex flex-wrap;
 }
+
+.referencesGrid {
+  @apply grid grid-cols-1 md:grid-cols-3 gap-6 mt-6;
+}
+
+.quoteCard {
+  @apply relative p-6 bg-gray-50 dark:bg-gray-800/50 rounded-lg flex flex-col;
+}
+
+.quoteIcon {
+  @apply text-gray-300 dark:text-gray-700 w-8 h-8 mb-3;
+}
+
+.quoteText {
+  @apply italic text-gray-700 dark:text-gray-300 mb-6 relative z-10 flex-grow;
+}
+
+.quoteFooter {
+  @apply mt-auto pt-2;
+}
+
+.quoteAuthor {
+  @apply block font-bold text-gray-900 dark:text-gray-100 text-sm;
+}
+
+.quoteRole {
+  @apply block text-xs text-gray-600 dark:text-gray-400 mt-0.5;
+}
+
+.referencesNotice {
+  @apply text-center text-gray-500 text-sm italic mt-4 -mb-8;
+}

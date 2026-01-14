@@ -5,6 +5,7 @@ import {
   Code,
   Megaphone,
   UserRound,
+  Quote,
 } from "lucide-react";
 import { Section } from "../components/ui/Section";
 import {
@@ -72,6 +73,29 @@ const SkillPill = ({ skill }: { skill: string }) => (
   >
     {skill}
   </motion.span>
+);
+
+interface ReferenceQuoteProps {
+  text: string;
+  author: string;
+  role: string;
+}
+
+const ReferenceQuote = ({ text, author, role }: ReferenceQuoteProps) => (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5 }}
+    viewport={{ once: true }}
+    className={styles.quoteCard}
+  >
+    <Quote className={styles.quoteIcon} />
+    <p className={styles.quoteText}>"{text}"</p>
+    <div className={styles.quoteFooter}>
+      <span className={styles.quoteAuthor}>{author}</span>
+      <span className={styles.quoteRole}>{role}</span>
+    </div>
+  </motion.div>
 );
 
 const sseDescription = (
@@ -210,8 +234,27 @@ export const Resume = () => {
           <SubHeading className={styles.experienceHeading}>
             <Megaphone className={styles.experienceIcon} /> Professional
             References
-            {/* Fill in details */}
           </SubHeading>
+          <div className={styles.referencesGrid}>
+            <ReferenceQuote
+              text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+              author="Jane Doe"
+              role="CTO, TechCorp"
+            />
+            <ReferenceQuote
+              text="Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+              author="John Smith"
+              role="VP of Engineering, DataSystems"
+            />
+            <ReferenceQuote
+              text="Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+              author="Emily White"
+              role="Senior Product Manager, InnovateInc"
+            />
+          </div>
+          <div className={styles.referencesNotice}>
+            Full references available upon request
+          </div>
         </div>
         <div className={styles.sectionBlock}>
           <SubHeading className={styles.experienceHeading}>
