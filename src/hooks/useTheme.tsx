@@ -27,7 +27,7 @@ export function ThemeProvider({
   storageKey = "theme",
 }: ThemeProviderProps) {
   const [theme, setTheme] = useState<Theme>(
-    () => (Cookies.get(storageKey) as Theme) || defaultTheme,
+    () => (Cookies.get(storageKey) as Theme) || defaultTheme
   );
 
   useEffect(() => {
@@ -57,6 +57,7 @@ export function ThemeProvider({
   );
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useTheme = () => {
   const context = useContext(ThemeProviderContext);
 

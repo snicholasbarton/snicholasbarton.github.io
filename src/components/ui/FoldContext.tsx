@@ -15,9 +15,10 @@ interface FoldGlobalContextType {
 }
 
 const FoldGlobalContext = createContext<FoldGlobalContextType | undefined>(
-  undefined,
+  undefined
 );
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useFoldGlobal = () => {
   const context = useContext(FoldGlobalContext);
   if (!context) {
@@ -29,11 +30,13 @@ export const useFoldGlobal = () => {
 // Context for nesting depth
 const FoldDepthContext = createContext<number>(0);
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useFoldDepth = () => useContext(FoldDepthContext);
 
 // Context for visibility chain (Render Hidden pattern)
 const FoldVisibilityContext = createContext<boolean>(true);
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useFoldVisibility = () => useContext(FoldVisibilityContext);
 
 export const FoldProvider = ({ children }: { children: React.ReactNode }) => {
@@ -51,7 +54,7 @@ export const FoldProvider = ({ children }: { children: React.ReactNode }) => {
       maxDepthDetected,
       registerDepth,
     }),
-    [globalExpandLevel, maxDepthDetected, registerDepth],
+    [globalExpandLevel, maxDepthDetected, registerDepth]
   );
 
   return (
