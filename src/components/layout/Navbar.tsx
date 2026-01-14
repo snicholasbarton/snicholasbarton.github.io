@@ -1,10 +1,10 @@
-import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { useTheme } from '../../hooks/useTheme';
-import { Menu, X, Sun, Moon } from 'lucide-react';
-import { cn } from '../../lib/utils';
-import { Button } from '../ui/Button';
-import styles from './Navbar.module.css';
+import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { useTheme } from "../../hooks/useTheme";
+import { Menu, X, Sun, Moon } from "lucide-react";
+import { cn } from "../../lib/utils";
+import { Button } from "../ui/Button";
+import styles from "./Navbar.module.css";
 
 export const Navbar = () => {
   const { theme, setTheme } = useTheme();
@@ -12,14 +12,14 @@ export const Navbar = () => {
   const location = useLocation();
 
   const navLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'Resume', path: '/resume' },
-    { name: 'Blog', path: '/blog' },
-    { name: 'About Me', path: '/about-me' },
+    { name: "Home", path: "/" },
+    { name: "Resume", path: "/resume" },
+    { name: "Blog", path: "/blog" },
+    { name: "About Me", path: "/about-me" },
   ];
 
   const toggleTheme = () => {
-    setTheme(theme === 'light' ? 'dark' : 'light');
+    setTheme(theme === "light" ? "dark" : "light");
   };
 
   return (
@@ -44,7 +44,7 @@ export const Navbar = () => {
                     styles.link,
                     location.pathname === link.path
                       ? styles.linkActive
-                      : styles.linkInactive
+                      : styles.linkInactive,
                   )}
                 >
                   {link.name}
@@ -56,7 +56,7 @@ export const Navbar = () => {
                 onClick={toggleTheme}
                 aria-label="Toggle theme"
               >
-                {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+                {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
               </Button>
             </div>
           </div>
@@ -69,7 +69,7 @@ export const Navbar = () => {
               onClick={toggleTheme}
               className={styles.mobileMenuBtn}
             >
-              {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+              {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
             </Button>
             <Button
               variant="ghost"
@@ -96,7 +96,7 @@ export const Navbar = () => {
                   styles.mobileLink,
                   location.pathname === link.path
                     ? styles.linkActive
-                    : styles.linkInactive
+                    : styles.linkInactive,
                 )}
               >
                 {link.name}

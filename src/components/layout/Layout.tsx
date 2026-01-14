@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { Navbar } from './Navbar';
-import { Footer } from './Footer';
-import { Expand } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
-import styles from './Layout.module.css';
+import React, { useState, useEffect } from "react";
+import { Navbar } from "./Navbar";
+import { Footer } from "./Footer";
+import { Expand } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import styles from "./Layout.module.css";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -25,11 +25,11 @@ const ResizeIndicator = () => {
       setIsVisible(false);
     };
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     return () => {
       clearTimeout(timer);
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -48,7 +48,9 @@ const ResizeIndicator = () => {
           </div>
           <div className={styles.indicatorTextContainer}>
             <span className={styles.indicatorTitle}>Try resizing!</span>
-            <span className={styles.indicatorSubtitle}>See the layout adapt to your screen.</span>
+            <span className={styles.indicatorSubtitle}>
+              See the layout adapt to your screen.
+            </span>
           </div>
         </motion.div>
       )}
@@ -60,9 +62,7 @@ export const Layout = ({ children }: LayoutProps) => {
   return (
     <div className={styles.container}>
       <Navbar />
-      <main className={styles.main}>
-        {children}
-      </main>
+      <main className={styles.main}>{children}</main>
       <ResizeIndicator />
       <Footer />
     </div>

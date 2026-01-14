@@ -20,4 +20,3 @@ jobs:
           title: "Release: Merge main into publish"
           body: |
             This is an automated PR to publish the latest changes from `main` into the `publish` branch, to be deployed to the live site.
-  

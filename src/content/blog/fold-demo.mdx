@@ -1,5 +1,5 @@
-import { Fold } from '../../components/ui/Fold';
-import { FoldController } from '../../components/ui/FoldController';
+import { Fold } from "../../components/ui/Fold";
+import { FoldController } from "../../components/ui/FoldController";
 
 <FoldController />
 
@@ -14,9 +14,9 @@ This is the top-level content. It is always visible (Depth 0).
 <Fold>
   ### Level 1 Expanded
 
-  You have expanded the first fold! This content is considered **Depth 1**.
+You have expanded the first fold! This content is considered **Depth 1**.
 
-  Inside here, we can go deeper.
+Inside here, we can go deeper.
 
   <Fold>
     #### Level 2: The Rabbit Hole
@@ -36,9 +36,11 @@ This is the top-level content. It is always visible (Depth 0).
        You can collapse this specific section by clicking the left rail.
        Or collapse the parent (Level 2) to hide this too.
     </Fold>
+
   </Fold>
 
-  Here is some more Level 1 content after the nested block.
+Here is some more Level 1 content after the nested block.
+
 </Fold>
 
 ## Another Top Level Section
@@ -46,11 +48,12 @@ This is the top-level content. It is always visible (Depth 0).
 <Fold>
   ### Level 1 (Part B)
 
-  This is another fold at the root level.
+This is another fold at the root level.
 
   <Fold>
      #### Level 2 (Part B)
 
      Just checking that multiple independent folds work.
+
   </Fold>
 </Fold>
