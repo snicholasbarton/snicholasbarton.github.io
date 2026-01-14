@@ -31,6 +31,7 @@ export const Fold = ({ children }: FoldProps) => {
   // Sync with Global Control
   useEffect(() => {
     if (globalExpandLevel >= currentLevel) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setIsOpen(true);
     } else {
       setIsOpen(false);
@@ -41,6 +42,7 @@ export const Fold = ({ children }: FoldProps) => {
   // If parent becomes invisible, we must close.
   useEffect(() => {
     if (!isParentVisible && isOpen) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setIsOpen(false);
     }
   }, [isParentVisible, isOpen]);
