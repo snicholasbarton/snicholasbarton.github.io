@@ -11,10 +11,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
       - uses: actions/setup-node@v4
-        with: { node-version: 20, cache: 'npm' }
-      - run: npm ci
-      - run: npx prettier --check .
-      # - run: npm run lint # disabled until we fix everything
-      - run: npx tsc --noEmit
-      - run: npm run build
+        with:
+          node-version: 20
+          cache: 'pnpm'
+      - run: pnpm install
+      - run: pnpm exec prettier --check .
+      - run: pnpm run lint
+      - run: pnpm exec tsc --noEmit
+      - run: pnpm exec tsc --noEmit
