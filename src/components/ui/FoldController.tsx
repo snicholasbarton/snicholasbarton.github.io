@@ -17,7 +17,7 @@ export const FoldController = () => {
       // rootMargin top needs to account for the offset.
       // When sentinel scrolls past the sticky point, it's "stuck".
       // The sticky point is 80px (5rem)
-      { threshold: 1, rootMargin: "-81px 0px 0px 0px" }
+      { threshold: 1, rootMargin: "-81px 0px 0px 0px" },
     );
 
     if (sentinelRef.current) {
@@ -31,7 +31,7 @@ export const FoldController = () => {
 
   const levels = Array.from(
     { length: Math.min(maxDepthDetected, 5) },
-    (_, i) => i + 1
+    (_, i) => i + 1,
   );
 
   return (
@@ -43,7 +43,7 @@ export const FoldController = () => {
       <div
         className={cn(
           styles.container,
-          isStuck ? styles.stuck : styles.notStuck
+          isStuck ? styles.stuck : styles.notStuck,
         )}
       >
         <div className={styles.controls}>
