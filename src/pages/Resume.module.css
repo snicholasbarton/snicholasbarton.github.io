@@ -1,11 +1,42 @@
 @reference "../index.css";
 
+.pageWrapper {
+  @apply relative min-h-screen;
+}
+
+/*
+  On large screens, push content to the right to make room for ToC
+  when it is implicitly taking up space in the layout.
+  However, since ToC is fixed, we might need padding-left on the content wrapper.
+*/
+
+.contentWrapper {
+  @apply transition-all duration-300 ease-in-out;
+}
+
+@media (min-width: 1280px) {
+  /*
+     If ToC is expanded (which is default on XL), we add left padding
+     to the content so it doesn't overlap.
+     The ToC is w-64 (16rem) + padding.
+     Let's define a modifier class for when ToC is expanded.
+  */
+}
+
+.withSidebar {
+  @apply xl:pl-72; /* 64 (width) + extra spacing */
+}
+
+.withEdge {
+  @apply pl-12; /* 8 (width) + spacing */
+}
+
 .resumeSection {
-  @apply scroll-mt-20;
+  @apply scroll-mt-24;
 }
 
 .sectionBlock {
-  @apply mb-16;
+  @apply mb-16 scroll-mt-28;
 }
 
 .experienceHeading {

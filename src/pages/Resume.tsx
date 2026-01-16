@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
   Briefcase,
@@ -17,6 +18,8 @@ import {
 } from "../components/ui/Typography";
 import styles from "./Resume.module.css";
 import { Tooltip } from "../components/ui/Tooltip";
+import { TableOfContents } from "../components/Resume/TableOfContents";
+import { cn } from "../lib/utils";
 
 interface TimelineSubItem {
   subtitle: string;
@@ -42,13 +45,14 @@ const TimelineItem = ({ title, icon, subItems }: TimelineItemProps) => {
       <div className="mt-3">
         {subItems.map((item, index) => (
           <motion.div
+            key={index}
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
             className={styles.timelineItem}
           >
-            <div key={index}>
+            <div>
               <div className={styles.timelineHeader}>
                 <div className={styles.timelineSubtitle}>{item.subtitle}</div>
                 <span className={styles.timelineDate}>{item.date}</span>
@@ -208,148 +212,194 @@ const princetonDescription = (
   </UnorderedList>
 );
 
+const SECTIONS = [
+  { id: "summary", label: "Summary" },
+  { id: "references", label: "References" },
+  { id: "experience", label: "Experience" },
+  { id: "education", label: "Education" },
+  { id: "skills", label: "Skills" },
+];
+
 export const Resume = () => {
+  const [isTocExpanded, setIsTocExpanded] = useState(() =>
+    typeof window !== 'undefined' ? window.innerWidth >= 1280 : true
+  );
+
+  // Handle responsive auto-collapse without overriding manual toggle
+  useEffect(() => {
+    let lastWidth = window.innerWidth;
+    const checkSize = () => {
+      const currentWidth = window.innerWidth;
+      const wasMobile = lastWidth < 1280;
+      const isMobile = currentWidth < 1280;
+
+      if (wasMobile !== isMobile) {
+        // Only change state when crossing the breakpoint
+        setIsTocExpanded(!isMobile);
+      }
+      lastWidth = currentWidth;
+    };
+
+    window.addEventListener("resize", checkSize);
+    return () => window.removeEventListener("resize", checkSize);
+  }, []);
+
   return (
-    <Section>
-      <div id="resume" className={styles.resumeSection}>
-        <div className={styles.sectionBlock}>
-          <SubHeading className={styles.experienceHeading}>
-            <UserRound className={styles.experienceIcon} /> Summary
-          </SubHeading>
-          <div className="space-y-2 -mb-8">
-            <Paragraph>
-              Senior software engineer with 7+ years experience architecting and
-              scaling mission-critical distributed systems. Proven track record
-              at Palantir leading the growth of Foundry’s streaming platform,
-              scaling usage 100x and building stateful, zero-downtime upgrade
-              orchestration for 1000+ Flink clusters.{" "}
-              <Link href="http://www.rhodes.bm/rhelects.htm#BARTON,_S._Nicholas">
-                Rhodes Scholar
-              </Link>{" "}
-              with graduate degrees in mathematics.
-            </Paragraph>
-          </div>
-        </div>
-        <div className={styles.sectionBlock}>
-          <SubHeading className={styles.experienceHeading}>
-            <Megaphone className={styles.experienceIcon} /> Professional
-            References
-          </SubHeading>
-          <div className={styles.referencesGrid}>
-            <ReferenceQuote
-              text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-              author="Jane Doe"
-              role="CTO, TechCorp"
-            />
-            <ReferenceQuote
-              text="Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-              author="John Smith"
-              role="VP of Engineering, DataSystems"
-            />
-            <ReferenceQuote
-              text="Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
-              author="Emily White"
-              role="Senior Product Manager, InnovateInc"
-            />
-          </div>
-          <div className={styles.referencesNotice}>
-            Full references available upon request
-          </div>
-        </div>
-        <div className={styles.sectionBlock}>
-          <SubHeading className={styles.experienceHeading}>
-            <Briefcase className={styles.experienceIcon} /> Experience
-          </SubHeading>
-          <div className="space-y-2">
-            <TimelineItem
-              title="Palantir Technologies"
-              icon={<Briefcase size={16} />}
-              subItems={[
-                {
-                  subtitle: "Senior Software Engineer",
-                  date: "2022 - 2025",
-                  description: sseDescription,
-                },
-                {
-                  subtitle:
-                    "Technical Lead, Forward Deployed Software Engineer",
-                  date: "2019 - 2022",
-                  description: tlDescription,
-                },
-                {
-                  subtitle: "Forward Deployed Software Engineer",
-                  date: "2018 - 2019",
-                  description: fdeDescription,
-                },
-              ]}
-            />
-          </div>
-        </div>
+    <div className={styles.pageWrapper}>
+      <TableOfContents
+        sections={SECTIONS}
+        isExpanded={isTocExpanded}
+        onToggle={setIsTocExpanded}
+      />
 
-        <div className={styles.sectionBlock}>
-          <SubHeading className={styles.experienceHeading}>
-            <GraduationCap className={styles.experienceIcon} /> Education
-          </SubHeading>
-          <div className="space-y-2">
-            <TimelineItem
-              title="Rhodes Scholar, University of Oxford"
-              icon={<GraduationCap size={16} />}
-              subItems={[
-                {
-                  subtitle:
-                    "MSc with Merit, Mathematical Modelling and Scientific Computing",
-                  date: "2018",
-                  description: oxfordDescription,
-                },
-              ]}
-            />
-            <TimelineItem
-              title="Imperial College London"
-              icon={<GraduationCap size={16} />}
-              subItems={[
-                {
-                  subtitle: "MSc with Distinction, Applied Mathematics",
-                  date: "2017",
-                  description: imperialDescription,
-                },
-              ]}
-            />
-            <TimelineItem
-              title="Princeton University"
-              icon={<GraduationCap size={16} />}
-              subItems={[
-                {
-                  subtitle: "AB with Honours, Astrophysical Sciences",
-                  date: "2016",
-                  description: princetonDescription,
-                },
-              ]}
-            />
-          </div>
-        </div>
+      <div
+        className={cn(
+          styles.contentWrapper,
+          isTocExpanded ? styles.withSidebar : styles.withEdge
+        )}
+      >
+        <Section>
+          <div id="resume" className={styles.resumeSection}>
+            <div id="summary" className={styles.sectionBlock}>
+              <SubHeading className={styles.experienceHeading}>
+                <UserRound className={styles.experienceIcon} /> Summary
+              </SubHeading>
+              <div className="space-y-2 -mb-8">
+                <Paragraph>
+                  Senior software engineer with 7+ years experience architecting and
+                  scaling mission-critical distributed systems. Proven track record
+                  at Palantir leading the growth of Foundry’s streaming platform,
+                  scaling usage 100x and building stateful, zero-downtime upgrade
+                  orchestration for 1000+ Flink clusters.{" "}
+                  <Link href="http://www.rhodes.bm/rhelects.htm#BARTON,_S._Nicholas">
+                    Rhodes Scholar
+                  </Link>{" "}
+                  with graduate degrees in mathematics.
+                </Paragraph>
+              </div>
+            </div>
+            <div id="references" className={styles.sectionBlock}>
+              <SubHeading className={styles.experienceHeading}>
+                <Megaphone className={styles.experienceIcon} /> Professional
+                References
+              </SubHeading>
+              <div className={styles.referencesGrid}>
+                <ReferenceQuote
+                  text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                  author="Jane Doe"
+                  role="CTO, TechCorp"
+                />
+                <ReferenceQuote
+                  text="Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+                  author="John Smith"
+                  role="VP of Engineering, DataSystems"
+                />
+                <ReferenceQuote
+                  text="Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+                  author="Emily White"
+                  role="Senior Product Manager, InnovateInc"
+                />
+              </div>
+              <div className={styles.referencesNotice}>
+                Full references available upon request
+              </div>
+            </div>
+            <div id="experience" className={styles.sectionBlock}>
+              <SubHeading className={styles.experienceHeading}>
+                <Briefcase className={styles.experienceIcon} /> Experience
+              </SubHeading>
+              <div className="space-y-2">
+                <TimelineItem
+                  title="Palantir Technologies"
+                  icon={<Briefcase size={16} />}
+                  subItems={[
+                    {
+                      subtitle: "Senior Software Engineer",
+                      date: "2022 - 2025",
+                      description: sseDescription,
+                    },
+                    {
+                      subtitle:
+                        "Technical Lead, Forward Deployed Software Engineer",
+                      date: "2019 - 2022",
+                      description: tlDescription,
+                    },
+                    {
+                      subtitle: "Forward Deployed Software Engineer",
+                      date: "2018 - 2019",
+                      description: fdeDescription,
+                    },
+                  ]}
+                />
+              </div>
+            </div>
 
-        <div className={styles.sectionBlock}>
-          <SubHeading className={styles.experienceHeading}>
-            <Code className={styles.experienceIcon} /> Skills
-          </SubHeading>
-          <div className={styles.skillsContainer}>
-            {[
-              "React",
-              "TypeScript",
-              "Node.js",
-              "Python",
-              "AWS",
-              "Docker",
-              "GraphQL",
-              "Tailwind CSS",
-              "PostgreSQL",
-              "Redis",
-            ].map((skill) => (
-              <SkillPill key={skill} skill={skill} />
-            ))}
+            <div id="education" className={styles.sectionBlock}>
+              <SubHeading className={styles.experienceHeading}>
+                <GraduationCap className={styles.experienceIcon} /> Education
+              </SubHeading>
+              <div className="space-y-2">
+                <TimelineItem
+                  title="Rhodes Scholar, University of Oxford"
+                  icon={<GraduationCap size={16} />}
+                  subItems={[
+                    {
+                      subtitle:
+                        "MSc with Merit, Mathematical Modelling and Scientific Computing",
+                      date: "2018",
+                      description: oxfordDescription,
+                    },
+                  ]}
+                />
+                <TimelineItem
+                  title="Imperial College London"
+                  icon={<GraduationCap size={16} />}
+                  subItems={[
+                    {
+                      subtitle: "MSc with Distinction, Applied Mathematics",
+                      date: "2017",
+                      description: imperialDescription,
+                    },
+                  ]}
+                />
+                <TimelineItem
+                  title="Princeton University"
+                  icon={<GraduationCap size={16} />}
+                  subItems={[
+                    {
+                      subtitle: "AB with Honours, Astrophysical Sciences",
+                      date: "2016",
+                      description: princetonDescription,
+                    },
+                  ]}
+                />
+              </div>
+            </div>
+
+            <div id="skills" className={styles.sectionBlock}>
+              <SubHeading className={styles.experienceHeading}>
+                <Code className={styles.experienceIcon} /> Skills
+              </SubHeading>
+              <div className={styles.skillsContainer}>
+                {[
+                  "React",
+                  "TypeScript",
+                  "Node.js",
+                  "Python",
+                  "AWS",
+                  "Docker",
+                  "GraphQL",
+                  "Tailwind CSS",
+                  "PostgreSQL",
+                  "Redis",
+                ].map((skill) => (
+                  <SkillPill key={skill} skill={skill} />
+                ))}
+              </div>
+            </div>
           </div>
-        </div>
+        </Section>
       </div>
-    </Section>
+    </div>
   );
 };

@@ -1,0 +1,61 @@
+@reference "../../index.css";
+
+.tocContainer {
+  @apply fixed left-0 top-20 bottom-0 z-40 hidden md:flex flex-col;
+}
+
+.tocWrapper {
+  @apply bg-background/95 backdrop-blur-sm border-r border-gray-200 dark:border-gray-800 shadow-sm h-full overflow-y-auto;
+}
+
+.tocContent {
+  @apply py-6 px-4 w-64 flex flex-col;
+}
+
+.tocHeader {
+  @apply flex items-center justify-between mb-6;
+}
+
+.tocTitle {
+  @apply text-sm font-semibold text-gray-500 uppercase tracking-wider;
+}
+
+.tocList {
+  @apply space-y-1;
+}
+
+.tocLink {
+  @apply block px-3 py-2 text-sm text-gray-600 dark:text-gray-400 rounded-md transition-colors duration-200;
+}
+
+.tocLink:hover {
+  @apply bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100;
+}
+
+.tocLinkActive {
+  @apply bg-primary/10 text-primary font-medium;
+}
+
+.tocLinkActive:hover {
+  @apply bg-primary/20 text-primary;
+}
+
+/* Collapsed State / Edge */
+.edgeContainer {
+  @apply h-full w-8 bg-background border-r border-gray-200 dark:border-gray-800 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors flex flex-col items-center pt-6;
+}
+
+.edgeIcon {
+  @apply text-gray-400 hover:text-primary transition-colors;
+}
+
+.edgeText {
+  @apply mt-8 text-xs font-medium text-gray-400 tracking-widest uppercase;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+}
+
+.collapseButton {
+  @apply p-1 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-500 transition-colors;
+}
