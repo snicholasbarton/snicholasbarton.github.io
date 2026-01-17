@@ -21,8 +21,8 @@ export const AboutMe = () => {
         <Heading>Hobbies & Interests</Heading>
         <Paragraph className={styles.introText}>
           Outside of my professional life, I enjoy deeply immersing myself in my
-          hobbies. I most enjoy hobbies that bring me closer to nature, get me
-          outside, and fill my life with new and rich experiences.
+          hobbies. I most enjoy hobbies that bring me closer to nature and get
+          me outside, and fill my life with new and rich experiences.
         </Paragraph>
 
         <div className={styles.stack}>
@@ -33,13 +33,13 @@ export const AboutMe = () => {
             <div>
               <SubHeading>Birding</SubHeading>
               <Paragraph>
-                I have been an avid birder since I was 6, inspired by a school
-                unit on the local biology and geography of Bermuda, where I was
-                born and raised. Birding helps me connect with the environment
-                around me, and imparts a wonderful sense of time, place, and
-                seasonality to life, not to mention the diversity and beauty of
-                the birds themselves. Spring Migration in Brooklyn's Prospect
-                Park is one of my favourite experiences every year. Check out my{" "}
+                I have been birding since I was 6, inspired by a school unit on
+                the local biology and geography of Bermuda, where I was born and
+                raised. Birding helps me connect with the environment around me,
+                and imparts a wonderful sense of time, place, and seasonality to
+                life, not to mention the diversity and beauty of the birds
+                themselves. Spring Migration in Brooklyn's Prospect Park is one
+                of my favourite experiences every year. Check out my{" "}
                 <Link href={"https://ebird.org/profile/NjU2Nzg0Mw"}>eBird</Link>{" "}
                 profile!
               </Paragraph>
@@ -54,12 +54,11 @@ export const AboutMe = () => {
               <SubHeading>Sports and Fitness</SubHeading>
               <Paragraph>
                 Keeping fit and active is one of the most important parts of my
-                day-to-day life. The sense of embodiment and empowerment I get
-                from winning a squash match, scoring a goal, or crushing a tough
-                workout can't be beat. Squash in particular has been an integral
-                component of my life, and it was an honour to be a member of
-                both Bermuda's Junior National Team as well as Princeton's
-                Varsity Squash Team.
+                day-to-day life. I play rec league soccer in New York and also
+                enjoy bouldering. Squash in particular has been an integral part
+                of my life, and it was an honour to be a member of both
+                Bermuda's Junior National Team as well as Princeton's Varsity
+                Squash Team. I sometimes win tournaments too.
               </Paragraph>
             </div>
           </div>
@@ -71,14 +70,12 @@ export const AboutMe = () => {
             <div>
               <SubHeading>Diving</SubHeading>
               <Paragraph>
-                Growing up on an island, surrounded by the azure Sargasso Sea, I
-                found myself in and under the water just as often as I was on
-                land. I especially love the vibrant colours and spectacular
-                structures of healthy corals. I am a certified Rescue Diver with
-                multiple advanced specialties, and have been lucky enough to
-                dive in some of the most pristine waters in the world. Diving
-                Fiji's Rainbow Reef in particular is something I will never
-                forget.
+                Growing up on an island I found myself in and under the water
+                just as often as I was on land; I especially love exploring
+                healthy reefs. I am a certified Rescue Diver with multiple
+                advanced specialties, and have been lucky enough to dive in some
+                of the best sites in the world. Diving Fiji's Rainbow Reef and
+                the Yucatan cenotes are some of my most memorable experiences.
               </Paragraph>
             </div>
           </div>
@@ -91,11 +88,10 @@ export const AboutMe = () => {
               <SubHeading>Cooking and Baking</SubHeading>
               <Paragraph>
                 When I'm not outside, you're likely to find me experimenting in
-                the kitchen. From warming curries made from scratch and
-                Bermudian classics like fish cakes and peas 'n' rice to fanciful
-                ice cream flavours and delicate macarons, I enjoy the meditative
-                act of working with my hands as much as the creative culinary
-                process. A delicious end result is an added bonus!
+                the kitchen. I enjoy the meditative act of working with my hands
+                as much as the creative process. Some favourite dishes include
+                Japanese katsu curry made from scratch and my signature
+                pistachio cake.
               </Paragraph>
             </div>
           </div>

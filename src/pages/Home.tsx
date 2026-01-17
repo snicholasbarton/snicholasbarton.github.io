@@ -27,9 +27,10 @@ export const Home = () => {
               Hi, I'm <span className={styles.heroName}>Nicholas Barton</span>.
             </Heading>
             <Paragraph className={styles.heroText}>
-              I'm a devoted husband, professional software engineer, and avid
-              outdoorsman. Let's talk about how software and technology can
-              drive real-world outcomes and positive change.
+              I'm a professional software engineer with experience building
+              distributed systems and real-time streaming products. Let's talk
+              about how technology can make material changes to real-world
+              processes and outcomes.
             </Paragraph>
             <div className={styles.heroActions}>
               <Button asChild>
@@ -67,7 +68,10 @@ export const Home = () => {
               <h3 className="text-xl font-semibold mb-4 text-gray-700 dark:text-gray-300">
                 Latest Post
               </h3>
-              <Link to={`/blog/${latestPost.slug}`} className={styles.latestPostCard}>
+              <Link
+                to={`/blog/${latestPost.slug}`}
+                className={styles.latestPostCard}
+              >
                 <span className={styles.blogDate}>{latestPost.date}</span>
                 <h4 className={styles.blogTitle}>{latestPost.title}</h4>
                 <p className={styles.blogExcerpt}>{latestPost.excerpt}</p>
