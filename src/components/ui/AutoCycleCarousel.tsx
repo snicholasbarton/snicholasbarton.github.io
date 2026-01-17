@@ -48,13 +48,13 @@ export const AutoCycleCarousel = <T,>({
 
       {showTimer && items.length > 1 && (
         <div className="absolute top-0 right-0 w-24 h-1 mt-2 mr-2 overflow-hidden rounded-full bg-gray-200 dark:bg-gray-700">
-            <motion.div
-                key={currentIndex}
-                initial={{ width: "100%" }}
-                animate={{ width: "0%" }}
-                transition={{ duration: interval / 1000, ease: "linear" }}
-                className="h-full bg-gray-400 dark:bg-gray-500"
-            />
+          <motion.div
+            key={currentIndex}
+            initial={{ width: "100%" }}
+            animate={{ width: "0%" }}
+            transition={{ duration: interval / 1000, ease: "linear" }}
+            className="h-full bg-gray-400 dark:bg-gray-500"
+          />
         </div>
       )}
     </div>
